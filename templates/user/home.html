@@ -1,0 +1,40 @@
+{% extends "../base.html" %}
+{% block content %}
+{% include 'navbar_home.html' %}
+{% load static %}
+
+
+
+<div class="content">
+  <main>
+    <div class="test">test</div>
+    <article class="">
+      <section class="registrer">
+        <div class="container">
+          <div class="row box_registrer">
+            <div class="col-sm-12 col-md-6 text_registrer">
+              <img class="image_home" src="{% static '/assets/img/image_home.svg' %}" alt="">
+            </div>
+            <div class="col-sm-12 col-md-6 box_form_registrer">
+              <form class="form_registrer" action="" method="post">
+                <div class="title_registrer">Inscription</div>
+                <input class="input_registrer" type="text" name="" placeholder="Pseudo"><br>
+                <input class="input_registrer" type="email" name="" placeholder="Mail"><br>
+                <input class="input_registrer" type="password" name="" placeholder="Password"><br>
+                <input class="input_registrer" type="password" name="" placeholder="Password"><br>
+                <button type="submit" class="button_registrer">Inscription</button>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </article>
+    {% include 'navbar_mobile_home.html' %}
+
+  </main>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "../base.html" %}
+{% block content %}
+{% include 'navbar_user.html' %}
+{% load static %}
+
+<main class="content">
+  <div class="container">
+    <form class="row form_search_user">
+      <input type="text" class="col-12 input_search_user" placeholder="Rechercher">
+    </form>
+
+    <section class="">
+      <div class="row box_research_user">
+        <div class="col-sm-3">
+          <div class="box_user_search">
+            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
+            <div class="col-12 pseudo_search_user">Pseudo</div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="box_user_search">
+            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
+            <div class="col-12 pseudo_search_user">Pseudo</div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="box_user_search">
+            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
+            <div class="col-12 pseudo_search_user">Pseudo</div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="box_user_search">
+            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
+            <div class="col-12 pseudo_search_user">Pseudo</div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="box_user_search">
+            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
+            <div class="col-12 pseudo_search_user">Pseudo</div>
+          </div>
+        </div>
+
+    </section>
+  </div>
+
+  {% include 'navbar_mobile_user.html' %}
+
+</main>
+{% endblock %}

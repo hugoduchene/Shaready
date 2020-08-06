@@ -1,0 +1,29 @@
+{% extends "../base.html" %}
+{% block content %}
+{% include 'navbar_user.html' %}
+
+<main class="content">
+    <div class="container">
+        <section class="container_import_pic">
+            {% load static %}
+            <img class="image_user_change_pic" src="{% static '/assets/img/user-default.png' %}" alt=""><br>
+            <div class="box_button_import">
+                <input type="file" name="file" id="file" class="import_pic">
+                <label for="file" class="button_import_pic"><i class="fas fa-camera"></i></label>
+            </div>
+        </section>
+
+        <section class="container_change_pseudo">
+            <form action="" class="row form_change_pseudo">
+                <input type="text" placeholder="pseudo" class="col-8 input_change_pseudo">
+                <input type="submit" name="" id="" class="col-4 button_change_pseudo">
+            </form>
+        </section>
+    </div>
+
+
+    
+    {% include 'navbar_mobile_user.html' %}
+</main>
+
+{% endblock %}

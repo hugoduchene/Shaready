@@ -1,0 +1,48 @@
+{% extends "../base.html" %}
+{% block content %}
+{% include 'navbar_user.html' %}
+{% load static %}
+
+
+<main class="content">
+  <div class="container element_articles">
+
+    <div class="modal_class invisible">
+      <form class="box_make_message content_make_message">
+        <input type="text" class="title_create_post" placeholder="Titre"><br>
+        <textarea class="content_create_post" rows="3" cols="80" placeholder="Votre article ,..."></textarea><br>
+        <select name="pets" id="pet-select" class="choose_categorie_create">
+          <option  value="">Tendances</option>
+          <option  value="">Politique</option>
+        </select>
+        <input type="submit" class="button_create_post" name="" value="Envoyer">
+        <div class="number_caracter">850</div>
+      </form>
+    </div>
+
+  <section class="form_choose row">
+    <div class="col-9">
+      <select name="pets" id="pet-select" class="choose_categorie">
+        <option  value="">Tendances</option>
+        <option  value="">Politique</option>
+      </select>
+    </div>
+
+    <div class="col-3 button_edit">
+      <div class="button_plus"><i class="fas fa-edit"></i></div>
+    </div>
+  </section>
+
+  {% include 'articles/article.html' %}
+  {% include 'articles/article.html' %}
+  {% include 'articles/article.html' %}
+
+    
+  </div>
+
+  {% include 'navbar_mobile_user.html' %}
+
+</main>
+
+<script type="module" src="{% static '/js/script.js' %}"></script>
+{% endblock %}

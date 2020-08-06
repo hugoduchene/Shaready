@@ -1,0 +1,36 @@
+{% extends "../base.html" %}
+{% block content %}
+{% include 'navbar_user.html' %}
+{% load static %}
+
+<main class="content">
+  <div class="container content_notifications">
+    <div class="row box_notification">
+      <div class="col-4"><img src="{% static '/assets/img/user-default.png' %}" class="img_notifications" alt=""></div>
+
+      <div class="col-8">
+        <div class="pseudo_notifications">Pseudo</div>
+        <div class="date_notifications">22/11/2020</div>
+      </div>
+
+      <p class ="text_notifications">Le pseudo a commenté votre article </p>
+    </div>
+
+    <div class="row box_notification">
+      <div class="col-4"><img src="{% static '/assets/img/user-default.png' %}" class="img_notifications" alt=""></div>
+
+      <div class="col-8">
+        <div class="pseudo_notifications">Pseudo</div>
+        <div class="date_notifications">22/11/2020</div>
+      </div>
+
+      <p class ="text_notifications">Le pseudo a commenté votre article </p>
+    </div>
+
+
+  </div>
+
+  {% include 'navbar_mobile_user.html' %}
+</main>
+
+{% endblock %}
