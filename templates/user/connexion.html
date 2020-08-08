@@ -1,18 +1,21 @@
-{% extends "../base.html" %}
+{% extends "base.html" %}
 {% block content %}
 {% include 'navbar_home.html' %}
+{% load static %}
 <main class="content">
   <div class="container box_connexion">
     <form class="form_connexion" action="" method="post">
         <div class="title_connexion">Connexion</div>
-        <input class="input_connexion" type="text" name="" placeholder="Pseudo"><br>
-        <input class="input_connexion" type="password" name="" placeholder="Password"><br>
+        {% csrf_token %}
+        {{ form.username }}<br/>
+        {{ form.password }}<br/>
         <button type="submit" class="button_connexion">Inscription</button>
     </form>
   </div>
 
   {% include 'navbar_mobile_home.html' %}
 
-
+  
 </main>
+<script type="module" src="{% static '/js/main_connexion.js' %}"></script>
 {% endblock %}

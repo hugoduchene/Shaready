@@ -5,7 +5,7 @@ from django.utils import timezone
 # Create your models here.
 
 class CustomUser(AbstractUser):
-    image_profile = models.ImageField(upload_to='img')
+    image_profile = models.ImageField(upload_to='img', default='/static/assets/img/user-default.png')
     level = models.IntegerField(default=0)
     nbs_followers = models.IntegerField(default=0)
     nbs_gold_likes = models.IntegerField(default=0)

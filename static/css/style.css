@@ -154,6 +154,7 @@ a.component_footer{
   background-color: #FFFFFF;
   border-bottom: 1px solid #FF3939;
   box-shadow: 2px 2px 2px #FF3939;
+  padding-bottom: 60px;
 }
 
 a.title_navbar{
@@ -197,7 +198,7 @@ a.button_nav:hover{
   border: 2px solid white;
   border-radius: 6px;
   padding: 10%;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -287,6 +288,9 @@ button.button_registrer:hover{
 
 
 .title_post{
+  word-wrap: break-word;
+  font-style: italic;
+  font-weight: bold;
   font-size: 25px;
   margin-bottom: 8px;
 }
@@ -669,6 +673,10 @@ form.content_make_message{
 }
 
 @media screen and (max-width: 420px){
+  .form_choose{
+    z-index: 10;
+    position: relative;
+  }
   .box_notification{
     width: 100%!important;
   }

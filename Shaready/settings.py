@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'articles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,11 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, "Shaready", "templates"),
+)
+
 
 WSGI_APPLICATION = 'Shaready.wsgi.application'
 
@@ -134,8 +140,19 @@ INTERNAL_IPS = ['127.0.0.1']
 
 AUTHENTICATION_BACKENDS = ( 'django.contrib.auth.backends.ModelBackend', )
 AUTH_USER_MODEL = 'user.CustomUser'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'feed'
 
 #Direction of my image
 
 MEDIA_ROOT = '/img/'
+
+#config rest framework
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+

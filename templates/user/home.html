@@ -3,8 +3,6 @@
 {% include 'navbar_home.html' %}
 {% load static %}
 
-
-
 <div class="content">
   <main>
     <div class="test">test</div>
@@ -17,11 +15,12 @@
             </div>
             <div class="col-sm-12 col-md-6 box_form_registrer">
               <form class="form_registrer" action="" method="post">
+                {% csrf_token %}
                 <div class="title_registrer">Inscription</div>
-                <input class="input_registrer" type="text" name="" placeholder="Pseudo"><br>
-                <input class="input_registrer" type="email" name="" placeholder="Mail"><br>
-                <input class="input_registrer" type="password" name="" placeholder="Password"><br>
-                <input class="input_registrer" type="password" name="" placeholder="Password"><br>
+                {{ form.username }}<br>
+                {{ form.email }}<br>
+                {{ form.password1 }}<br>
+                {{ form.password2 }}<br>
                 <button type="submit" class="button_registrer">Inscription</button>
 
               </form>
@@ -34,6 +33,7 @@
 
     </article>
     {% include 'navbar_mobile_home.html' %}
+    <script type="module" src="{% static '/js/main_home.js' %}"></script>
 
   </main>
 </div>
