@@ -34,7 +34,7 @@ class TestModel(TestCase):
         self.likeArticle = LikeArticle.objects.create(
             id_article = self.article,
             id_user = self.user,
-            gold_like = True
+            reaction = 'gold_like'
         )
 
         self.comment = Comment.objects.create(
@@ -56,7 +56,7 @@ class TestModel(TestCase):
         self.assertEquals(self.article.content_article, 'Test content')
 
     def testLikeArticle(self):
-        self.assertEquals(self.likeArticle.gold_like, True)
+        self.assertEquals(self.likeArticle.reaction, 'gold_like')
 
     def test_comment(self):
         self.assertEquals(self.comment.content_comment, "Test comment")

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'user',
     'articles',
     'rest_framework',
+    'api_articles',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -144,15 +146,20 @@ LOGIN_REDIRECT_URL = 'feed'
 
 #Direction of my image
 
-MEDIA_ROOT = '/img/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/assets/img')
 
-#config rest framework
+#settings model articles
 
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
+LikeChoicesArticles = [
+    ('1', 'gold_like'),
+    ('2', 'like'),
+    ('3', 'dislike'),
+    ('4', 'fuck_like')
+]
+
+LikeChoicesComment = [
+    ('1', 'like'),
+    ('2', 'dislike'),
+]
+
 
