@@ -22,5 +22,6 @@ urlpatterns = [
     path('', HomeViews.as_view(), name='home'),
     path('user/', include('user.urls')),
     path('articles/', include('articles.urls')),
-    path('api-auth/', include('rest_framework.urls')),
+    path('api-auth/', include('rest_framework.urls'), name='apiAuth'),
+    path('api/', include('api.urls')),
 ]

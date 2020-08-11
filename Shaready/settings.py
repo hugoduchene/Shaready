@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'api_articles',
     'api',
+    'api_comments',
 ]
 
 MIDDLEWARE = [
