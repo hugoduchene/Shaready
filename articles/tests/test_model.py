@@ -46,7 +46,7 @@ class TestModel(TestCase):
         self.likeComment = LikeComment.objects.create(
             id_comments = self.comment,
             id_user = self.user,
-            like_comment = True,
+            reaction_comment = 'like',
         )
 
     def test_category(self):
