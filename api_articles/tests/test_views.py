@@ -11,6 +11,11 @@ class TestFeedEndpoint(APITestCase):
     def setUp(self):
         self.trends_artcle_url = reverse("trends")
         self.article_category_url = reverse("list_artcile_category", args=[3,1])
+        self.article_user_url = reverse("article_user", args=[1,1])
+
+    def test_get_article_user(self):
+        response = self.client.get(self.article_user_url)
+        self.assertEquals(response.status_code, status.HTTP_200_OK)
 
     def test_get_trends_api(self):
         response = self.client.get(self.trends_artcle_url)

@@ -17,6 +17,17 @@ from api_articles.serializers import (
     LikeArticleSerializer,
 )
 
+""" Manage endpoints articles user """
+class GetArticleUser(APIView):
+    
+    def get(self, request, idUser, idPage):
+        get_articles_user = Article.objects.filter(id_user=idUser).order_by('-date_article')
+        pagination = Paginator(get_articles_user, 10)
+        objects_page = pagination.get_page(idPage).object_list
+        serializer = AllDataArticle().get_all_infos(objects_page)
+
+        return Response(serializer.data)
+
 """ Manage endpoint's feed """
 class GetArticleTrends(APIView):
     
