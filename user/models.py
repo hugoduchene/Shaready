@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
+from Shaready.settings import ChoicesNotification
 
 # Create your models here.
 
@@ -14,6 +15,6 @@ class Subscription(models.Model):
 class Notification(models.Model):
     id_receiving = models.ForeignKey(CustomUser, related_name='user_receiving_notification', on_delete=models.CASCADE)
     id_giving = models.ForeignKey(CustomUser, related_name='user_giving_notification', on_delete=models.CASCADE)
-    type_notification = models.CharField(null=False, max_length=155)
+    type_notification = models.CharField(null=False, max_length=155, choices=ChoicesNotification)
     date_notification = models.DateTimeField(default=timezone.now)
     
