@@ -165,4 +165,10 @@ LikeChoicesComment = [
     ('2', 'dislike'),
 ]
 
+ChoicesNotification = [
+    ('1', 'follow'),
+    ('2', 'like_article'),
+    ('3', 'like_comment'),
+    ('4', 'comment'),
+]
 
