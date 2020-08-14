@@ -1,5 +1,6 @@
 from api_comments.serializer import CommentSerializer
 from django.db.models import Count
+from user.models import Notification
 
 class AllDataComment():
     
@@ -19,3 +20,10 @@ class AllDataComment():
 
         serializer = CommentSerializer(objects, many=True)
         return serializer
+
+    def create_notification(user_giving, pseudoUser, type):
+        create_notification = Notification(
+            id_giving=user_giving, 
+            id_receiving=CustomUser.objects.get(username=pseudoUser),
+            type_notification= type
+        ).save()

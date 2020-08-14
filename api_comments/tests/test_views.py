@@ -9,8 +9,8 @@ from rest_framework.test import APIClient
 class TestCommentsEndpoint(APITestCase):
     def setUp(self):
         self.get_all_url = reverse("getAll", args=[0,1])
-        self.create_like_comment_url = reverse("create_like_comment", args=[0])
-        self.create_comment_url = reverse("Create_comment", args=[0])
+        self.create_like_comment_url = reverse("create_like_comment", args=[0, 'testuser'])
+        self.create_comment_url = reverse("Create_comment", args=[0, 'testuser'])
         self.data_like_comment = {
             "recation_comment" : 1
         }
@@ -29,7 +29,7 @@ class TestCommentsEndpoint(APITestCase):
     def test_post_like_comment_authenticated(self):
         user = self.client.force_login(CustomUser.objects.get_or_create(username='testuser')[0])
         response = self.client.post(self.create_like_comment_url, self.data_like_comment, format='json')
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEquals(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_post_create_comment_article_unauthenticated(self):
         response = self.client.post(self.create_comment_url, self.data_comment, format='json')
@@ -38,4 +38,4 @@ class TestCommentsEndpoint(APITestCase):
     def test_post_create_comment_article_authenticated(self):
         user = self.client.force_login(CustomUser.objects.get_or_create(username='testuser')[0])
         response = self.client.post(self.create_comment_url, self.data_comment, format='json')
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEquals(response.status_code, status.HTTP_400_BAD_REQUEST)
