@@ -71,19 +71,20 @@ class CreateLikeArticle(APIView):
 
         if article_is_exist > 0:
             if serializer.is_valid():
-                LikeArticle.nbs_likes = LikeArticle.objects.filter(id_article=idArticle).values('reaction').annotate(
-                    total=Count('reaction')
-                )
-
                 ManageNotification().create_notification(request.user, pseudoUser, 2)
                 
                 if like_is_exist > 0:
                     objects_like.delete()
                     serializer.save(id_article=article[0], id_user=request.user)
-                    return Response(serializer.data)
+                    
                 else:
                     serializer.save(id_article=article[0], id_user=request.user)
-                    return Response(serializer.data)
+                
+                LikeArticle.nbs_likes = LikeArticle.objects.filter(id_article=idArticle).values('reaction').annotate(
+                    total=Count('reaction')
+                )
+                return Response(serializer.data)
+
             else:
                 return Response(
                     "ERROR : serialiazer pas valid", 
