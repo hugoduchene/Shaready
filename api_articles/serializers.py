@@ -10,15 +10,24 @@ from articles.models import (
 
 
 class LikeArticleSerializer(serializers.ModelSerializer):
+    nbs_likes = serializers.SerializerMethodField()
+
+    def get_nbs_likes(self, obj):
+        return obj.nbs_likes
+    
     class Meta:
         model = LikeArticle
-        fields = ('reaction',)
+        fields = ('reaction', 'nbs_likes')
 
 class ArticleCreateSerailizer(serializers.ModelSerializer):
+    info_user = serializers.SerializerMethodField()
 
+    def get_info_user(self, obj):
+        return obj.info_user
+    
     class Meta:
         model = Article
-        fields = ('title', 'content_article', 'id_category')
+        fields = ('title', 'content_article', 'id_category', 'info_user')
 
 class ArticleSerializer(serializers.ModelSerializer):
     nbs_likes = serializers.SerializerMethodField()

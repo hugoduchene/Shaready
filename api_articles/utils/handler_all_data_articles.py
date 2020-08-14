@@ -1,5 +1,7 @@
 from api_articles.serializers import ArticleSerializer
+from django.core.paginator import Paginator
 from django.db.models import Count
+from user.models import Notification, CustomUser
 
 class AllDataArticle():
     
@@ -20,3 +22,15 @@ class AllDataArticle():
         serializer = ArticleSerializer(objects, many=True)
         return serializer
     
+    def pagination_objects(self, objects, idPage):
+        pagination = Paginator(objects, 10)
+        objects_page = pagination.get_page(idPage).object_list
+
+        return objects_page
+    
+    def create_notification(self, user_giving, pseudoUser, type):
+        create_notification = Notification(
+            id_giving=user_giving, 
+            id_receiving=CustomUser.objects.get(username=pseudoUser),
+            type_notification= type
+        ).save()
