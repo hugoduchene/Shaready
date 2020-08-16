@@ -2,7 +2,7 @@ from datetime import date
 from rest_framework import status
 from django.db.models import Count
 from utils.notification import ManageNotification
-from api_articles.utils.handler_all_data_articles import AllDataArticle
+from utils.all_data_article import AllDataArticle
 from user.models import CustomUser, Subscription, Notification
 from articles.models import Categories, Article, Comment, LikeArticle
 from django.utils import timezone

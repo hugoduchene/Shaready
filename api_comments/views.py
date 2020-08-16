@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.db.models import Count
 from rest_framework import status
-from api_comments.utils.all_data_comment import AllDataComment
+from utils.all_data_comment import AllDataComment
 from django.utils import timezone
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
