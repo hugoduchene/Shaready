@@ -3,28 +3,24 @@
 {% include 'navbar_user.html' %}
 {% load static %}
 
-
 <main class="content">
   <div class="container element_articles">
 
     <div class="modal_class invisible">
-      <form class="box_make_message content_make_message">
-        <input type="text" class="title_create_post" placeholder="Titre"><br>
-        <textarea class="content_create_post" rows="3" cols="80" placeholder="Votre article ,..."></textarea><br>
-        <select name="pets" id="pet-select" class="choose_categorie_create">
-          <option  value="">Tendances</option>
-          <option  value="">Politique</option>
-        </select>
-        <input type="submit" class="button_create_post" name="" value="Envoyer">
-        <div class="number_caracter">850</div>
+      <form class="box_make_message content_make_message" id="form_create_article">
+        <input type="text" class="title_create_post" id="title" placeholder="Titre"><br>
+        <textarea class="content_create_post" rows="3" cols="80" id="content_article" placeholder="Votre article ,..."></textarea><br>
+        <select name="pets" id="add_in_categories" class="choose_categorie_create"></select>
+        <input type="button" class="button_create_post" id="button_create_post" value="Envoyer">
+        <div class="number_caracter" id="number_character">0</div>
       </form>
     </div>
 
   <section class="form_choose row">
     <div class="col-9">
-      <select name="pets" id="pet-select" class="choose_categorie">
-        <option  value="">Tendances</option>
-        <option  value="">Politique</option>
+      <select name="pets" id="see_categories" class="choose_categorie">
+        <option value="trends" id="trends">Tendances</option>
+        <option value="subscription" id="subscription">Abonnements</option>
       </select>
     </div>
 
@@ -33,16 +29,12 @@
     </div>
   </section>
 
-  {% include 'articles/article.html' %}
-  {% include 'articles/article.html' %}
-  {% include 'articles/article.html' %}
-
+  <div id="place_article">
     
   </div>
-
+</div>
   {% include 'navbar_mobile_user.html' %}
-
 </main>
 
-<script type="module" src="{% static '/js/main_articles.js' %}"></script>
+<script type="module" src="{% static '/js/main_feed.js' %}"></script>
 {% endblock %}

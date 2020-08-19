@@ -1,6 +1,6 @@
 body, html{
   background-color: #F5F5F5;
-  height: 100%;
+  /*height: 100%;*/
 }
 img {
   border-radius: 6px;
@@ -33,6 +33,16 @@ input.import_pic{
 
 .button_change_pseudo:hover{
   background-color: white;
+  color: rgb(255, 57, 57);
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a:hover{
+  text-decoration: inherit;
   color: rgb(255, 57, 57);
 }
 
@@ -115,7 +125,7 @@ img.image_user_change_pic{
   text-decoration: none;
 }
 .main_container{
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -315,6 +325,7 @@ button.button_registrer:hover{
 
 .content_post{
   font-size: 19px;
+  word-wrap: break-word;
 }
 
 .title_post, .body_post{
@@ -474,6 +485,7 @@ button.button_registrer:hover{
 .title_create_post, .content_create_post{
   border: none;
   margin-bottom: 5px;
+  padding :8px;
 }
 
 .choose_categorie_create{
@@ -672,6 +684,12 @@ form.content_make_message{
   margin: 0 auto;
 }
 
+@media screen and (max-width: 767px){
+  .image_home {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 420px){
   .form_choose{
     z-index: 10;
@@ -745,7 +763,7 @@ form.content_make_message{
 
   .fa-search, .fa-user, .fa-newspape, .fa-bell{
 
-    font-size: px;
+    font-size: 25px!important;
   }
 }
 
@@ -819,7 +837,34 @@ form.content_make_message{
   z-index: -1;
 }
 
+.hidden{
+  display: none;
+}
+
 .visible {
   opacity: 1;
   visibility: visible;
+}
+
+/* loader */
+.loader {
+  margin-bottom: 15px !important;
+  margin-top: 15px!important;
+  margin: 0 auto;
+  border: 8px solid white; /* Light grey */
+  border-top: 8px solid rgb(255, 57, 57); /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.fa-heart, .fa-thumbs-up, .fa-thumbs-down, .fa-hand-middle-finger{
+  margin-right: 3px;
 }

@@ -52,7 +52,7 @@ class GetArticleCategory(APIView):
 
     def get(self, request, idCategory, idPage):
         articles = Article.objects.filter(id_category=idCategory).order_by('-date_article')[:100]
-        serializer = AllDataArticle().get_all_infos(AllDataArticle().pagination_objects(articles, 10))
+        serializer = AllDataArticle().get_all_infos(AllDataArticle().pagination_objects(articles, idPage))
         return Response(serializer.data)
 
 """ Manage endpoint's post like's article """
@@ -80,9 +80,7 @@ class CreateLikeArticle(APIView):
                 else:
                     serializer.save(id_article=article[0], id_user=request.user)
                 
-                LikeArticle.nbs_likes = LikeArticle.objects.filter(id_article=idArticle).values('reaction').annotate(
-                    total=Count('reaction')
-                )
+                LikeArticle.nbs_likes = {i+1 : LikeArticle.objects.filter(id_article=idArticle, reaction=i+1).count()for i in range(4)}
                 return Response(serializer.data)
 
             else:

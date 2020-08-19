@@ -15,6 +15,7 @@ class AllDataArticle():
             
             obj.nbs_likes = {v['reaction']:v['total'] for v in nbs_likes}
             obj.info_user = {
+                "id_user" : obj.id_user.id,
                 "photo" : str(obj.id_user.image_profile),
                 "pseudo" : obj.id_user.username
             }
