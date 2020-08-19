@@ -1,4 +1,4 @@
-import { get_button_edit, get_modal_class, get_box_make_message } from './module/popup_make_message.js';
+import { get_button_edit, get_modal_class } from './module/popup_make_message.js';
 import { infinite, url, request, create_loader, hidden_loader, insertPost, ManageArticle } from './module/settings.js'
 import { create_categories, infinite_scroll } from './module/FeedSettings.js'
 

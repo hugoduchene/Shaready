@@ -5,49 +5,16 @@
 
 <main class="content">
   <div class="container">
-    <form class="row form_search_user">
-      <input type="text" class="col-12 input_search_user" placeholder="Rechercher">
+    <form action="" class="row form_search_user" id="searchUser">
+      <input type="text" class="col-12 input_search_user" id="InsearchUser" placeholder="Rechercher">
     </form>
 
-    <section class="">
-      <div class="row box_research_user">
-        <div class="col-sm-3">
-          <div class="box_user_search">
-            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
-            <div class="col-12 pseudo_search_user">Pseudo</div>
-          </div>
-        </div>
-
-        <div class="col-sm-3">
-          <div class="box_user_search">
-            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
-            <div class="col-12 pseudo_search_user">Pseudo</div>
-          </div>
-        </div>
-
-        <div class="col-sm-3">
-          <div class="box_user_search">
-            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
-            <div class="col-12 pseudo_search_user">Pseudo</div>
-          </div>
-        </div>
-
-        <div class="col-sm-3">
-          <div class="box_user_search">
-            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
-            <div class="col-12 pseudo_search_user">Pseudo</div>
-          </div>
-        </div>
-
-        <div class="col-sm-3">
-          <div class="box_user_search">
-            <div class="col-12"><img src="{% static '/assets/img/user-default.png' %}" class="little_image_search_user" alt=""></div>
-            <div class="col-12 pseudo_search_user">Pseudo</div>
-          </div>
-        </div>
+    <section>
+      <div class="row box_research_user" id="PlaceUser">
 
     </section>
   </div>
+  <script type="module" src="{% static '/js/main_search_user.js' %}"></script>
 
   {% include 'navbar_mobile_user.html' %}
 

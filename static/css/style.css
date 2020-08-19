@@ -635,8 +635,8 @@ form.content_make_message{
   color: rgb(124, 124, 124);
 }
 .little_image_search_user{
-  max-width: 80px;
-  max-height: 80px;
+  width: 80px;
+  height: 80px;
 }
 .follow_button:hover{
   background-color: white;
@@ -816,14 +816,7 @@ form.content_make_message{
     width: auto!important;
 
   }
-
-  .little_image_search_user{
-    max-width: 40px;
-    max-height: 40px;
-  }
-
-
-
+  
   .box_user_search{
     white-space: pre-line;
     padding-top: -10px;
