@@ -5,10 +5,13 @@ from user.views import (
     ConnexionView, 
     SearchUserView, 
     NotificationsView,
-    ParameterAccountView)
+    ParameterAccountView,
+    AccountView,
+)
 
 urlpatterns = [
-    path('account/<int:id_account>', MyAccountView.as_view()),
+    path('myaccount/<int:id_account>', MyAccountView.as_view()),
+    path('account/<int:id_account>', AccountView.as_view()),
     path('login', auth_views.LoginView.as_view(template_name='../templates/user/connexion.html'), name="login"),
     path('logout', auth_views.LogoutView.as_view(next_page='/user/login'), name='logout'),
     path('search', SearchUserView.as_view()),

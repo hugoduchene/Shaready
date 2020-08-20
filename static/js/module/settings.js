@@ -36,7 +36,6 @@ const insertPost = async function(data, url_request) {
 
 const request = async function (url_request) {
   try {
-      let test = 1
       let response = await fetch(url_request)
       if (response.ok) {
         let data = await response.json()
@@ -161,8 +160,8 @@ function create_article(id_user, id_article, src_image, pseudo, date, title, con
 }
 
 function ManageArticle(data){
+  hidden_loader()
   for (let i = 0; i < data.length; i++){
-    hidden_loader()
     const place_article = document.getElementById('place_article')
     place_article.append(create_article(
       data[i].info_user.id_user,
@@ -197,17 +196,18 @@ function getCookie(name) {
 }
 
 function infinite(item, action){
-  let i = 1
+  let i = 0
   let observer = new IntersectionObserver(function (observables) {
     observables.forEach(function (observable) {
-      if (observable.intersectionRatio > 0) {
+      if (observable.intersectionRatio > 0.9) {
         i++
+        console.log(i)
         action(i)
 
       }
     })
   }, {
-    threshold: [0] // 100% has to be visible
+    threshold: [0.9] // 100% has to be visible
   })
 
   observer.observe(item)

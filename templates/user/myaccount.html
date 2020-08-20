@@ -8,21 +8,24 @@
       <section class="content_user_account">
         <a class="cog_account" href="/user/account/1/parameter"><i class="fas fa-cog"></i></a>
         {% load static %}
-        <img class="image_user" src="{% static '/assets/img/user-default.png' %}" alt=""><br>
-        <span class="name_user">Pseudo <i class="fas fa-check-square"></i></span>
+        {% static '/assets/img/' as img_url %}
+        <img class="image_user" src="{{img_url }}{{user.image_profile}}" alt=""><br>
+        <span class="name_user">{{user.username}} <i class="fas fa-check-square"></i></span>
 
         <div class="row info_user">
-          <div class="col-4 text_info">6 <div class="text_follow_like">Abonné(s)</div></div>
+          <div class="col-4 text_info">{{ nbs_follow }} <div class="text_follow_like">Abonné(s)</div></div>
           <div class="col-4 follow_button">S'abonner</div>
-          <div class="col-4 text_info">6 <div class="text_follow_like">Gold like(s)</div></div>
+          <div class="col-4 text_info">{{ nbs_gold_like }} <div class="text_follow_like">Gold like(s)</div></div>
         </div>
       </section>
 
-      {% include 'articles/article.html' %}
+      <section id="place_article">
 
-
+      </section>
     </div>
-      {% include 'navbar_mobile_user.html' %}
+
+    <script src="{% static '/js/main_account.js' %}" type="module"></script>
+    {% include 'navbar_mobile_user.html' %}
 
 
   </main>

@@ -3,9 +3,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from user.forms import RegistrationForm
 from django.contrib.auth import authenticate, login, logout
-
-
-
+from user.models import CustomUser
 
 # Create your views here.
 class HomeViews(View):
@@ -25,9 +23,28 @@ class HomeViews(View):
                 return redirect("feed")
         return render(request, "user/home.html")
     
-            
-class MyAccountView(TemplateView):
-    template_name = "user/myaccount.html"
+class AccountView(View):
+    def get(self, request, id_account, *args, **Kwargs) :
+        infos_user = CustomUser.objects.get(pk=id_account)
+        nbs_follows = infos_user.user_receiving_follow.count()
+        nbs_gold_likes = infos_user.likearticle_set.filter(reaction=1).count()
+        return render(request, "user/account.html", context={
+            'infos_user' : infos_user,
+            'nbs_follow' :  nbs_follows,
+            'nbs_gold_like' : nbs_gold_likes,
+        })          
+
+class MyAccountView(View):
+    def get(self, request, id_account, *args, **Kwargs):
+        if request.user.id == id_account:
+            nbs_follows = request.user.user_receiving_follow.count()
+            nbs_gold_likes = request.user.likearticle_set.filter(reaction=1).count()
+            return render(request, "user/myaccount.html", context={
+                'nbs_follow' :  nbs_follows,
+                'nbs_gold_like' : nbs_gold_likes,
+            })
+        else:
+            return redirect('feed')
 
 class ConnexionView(TemplateView):
     template_name = "user/connexion.html"

@@ -19,7 +19,7 @@ class AllInfosUserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = CustomUser
-        fields = ('image_profile', 'username','info_user',)
+        fields = ('image_profile', 'username','info_user', 'id')
 
 class ResearchUserSerializer(serializers.ModelSerializer):
     class Meta:

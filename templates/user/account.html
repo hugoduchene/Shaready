@@ -1,0 +1,34 @@
+{% extends "../base.html" %}
+{% block content %}
+{% include 'navbar_user.html' %}
+
+<main class="content">
+
+    <div class="container element">
+      <section class="content_user_account">
+        {% load static %}
+        {% static '/assets/img/' as path_img%}
+        <img class="image_user" src="{{path_img}}{{infos_user.image_profile}}" alt=""><br>
+        <span class="name_user">{{infos_user.username}} <i class="fas fa-check-square"></i></span>
+
+        <div class="row info_user">
+          <div class="col-4 text_info">{{nbs_follow}} <div class="text_follow_like">Abonné(s)</div></div>
+          <div class="col-4 follow_button">S'abonner</div>
+          <div class="col-4 text_info">{{nbs_gold_like}} <div class="text_follow_like">Gold like(s)</div></div>
+        </div>
+      </section>
+
+    <section id="place_article"></section>
+    
+    </div>
+    <script src="{% static '/js/main_account.js' %}" type="module"></script>
+      {% include 'navbar_mobile_user.html' %}
+
+
+  </main>
+
+
+
+
+
+{% endblock %}
