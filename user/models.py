@@ -17,5 +17,5 @@ class Notification(models.Model):
     id_giving = models.ForeignKey(CustomUser, related_name='user_giving_notification', on_delete=models.CASCADE)
     type_notification = models.CharField(null=False, max_length=155, choices=ChoicesNotification)
     read = models.BooleanField(default=False)
-    date_notification = models.DateTimeField(default=timezone.now)
+    date_notification = models.DateTimeField(default=timezone.now())
     

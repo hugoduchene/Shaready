@@ -44,9 +44,10 @@ class GetAllNotification(APIView):
 
     def get(self, request, idPage):
         all_notifications = Notification.objects.filter(id_receiving=request.user).order_by('-date_notification')
-        objects_page = Paginator(all_notifications, 15).get_page(idPage).object_list
+        objects_page = Paginator(all_notifications, 15).page(idPage).object_list
         for object_notification in objects_page:
             object_notification.infos_user = {
+                "id_user" : object_notification.id_giving.id,
                 "image_profile" : str(object_notification.id_giving.image_profile),
                 "pseudo" : object_notification.id_giving.username
             }
