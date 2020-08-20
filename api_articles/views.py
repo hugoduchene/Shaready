@@ -24,7 +24,7 @@ class GetArticleUser(APIView):
     
     def get(self, request, idUser, idPage):
         get_articles_user = Article.objects.filter(id_user=idUser).order_by('-date_article')
-        serializer = AllDataArticle().get_all_infos(AllDataArticle().pagination_objects(get_articles_user, 10))
+        serializer = AllDataArticle().get_all_infos(AllDataArticle().pagination_objects(get_articles_user, idPage))
         return Response(serializer.data)
 
 """ Manage endpoint's feed """
@@ -37,7 +37,7 @@ class GetArticleSubscribed(APIView):
         user_subscribed = Subscription.objects.filter(id_giving=request.user)
         list_id = [i.id_receiving for i in user_subscribed]
         articles = Article.objects.filter(id_user__in=list_id).order_by('-date_article')[:100]
-        serializer = AllDataArticle().get_all_infos(AllDataArticle().pagination_objects(articles, 10))
+        serializer = AllDataArticle().get_all_infos(AllDataArticle().pagination_objects(articles, idPage))
         return Response(serializer.data)
 
 class GetArticleTrends(APIView):

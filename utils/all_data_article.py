@@ -25,7 +25,7 @@ class AllDataArticle():
     
     def pagination_objects(self, objects, idPage):
         pagination = Paginator(objects, 10)
-        objects_page = pagination.get_page(idPage).object_list
+        objects_page = pagination.page(idPage).object_list
 
         return objects_page
     
