@@ -189,7 +189,17 @@ a.button_nav:hover{
 
 }
 
-.box_registrer, .box_connexion{
+.box_registrer{
+  margin-top: -100px!important;
+}
+
+.box_connexion{
+  padding-top: 4%;
+  text-align: center;
+  align-items: center;
+}
+
+.box_registrer{
   padding-top: 8%;
   text-align: center;
   align-items: center;
@@ -698,6 +708,9 @@ form.content_make_message{
 }
 
 @media screen and (max-width: 420px){
+  .box_registrer{
+    padding-top: 30%;
+  }
   .content{
     margin-top: 8px!important;
   }
@@ -774,6 +787,10 @@ form.content_make_message{
 
     font-size: 25px!important;
   }
+
+  .box_connexion{
+    padding-top: 35%!important;
+  }
 }
 
 
@@ -785,7 +802,7 @@ form.content_make_message{
   }
 
   .box_connexion{
-    padding-top: 35%;
+    padding-top: 5%;
   }
   .box_comments{
     margin-bottom: 50px;
@@ -830,6 +847,10 @@ form.content_make_message{
     white-space: pre-line;
     padding-top: -10px;
   }
+
+  .box_registrer{
+    margin-top: 0px!important;
+  }
 }
 
 
@@ -848,6 +869,17 @@ form.content_make_message{
   visibility: visible;
 }
 
+.already_follow{
+  background-color: white;
+  color: rgb(255, 57, 57);
+  
+}
+
+.already_follow:hover{
+  background-color: rgb(255, 57, 57);
+  color: white;
+}
+
 /* loader */
 .loader {
   margin-bottom: 15px !important;
@@ -860,6 +892,7 @@ form.content_make_message{
   height: 60px;
   animation: spin 1s linear infinite;
 }
+
 
 @keyframes spin {
   0% { transform: rotate(0deg); }

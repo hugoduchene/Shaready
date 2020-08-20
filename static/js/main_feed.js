@@ -95,7 +95,7 @@ document.getElementById('content_article').addEventListener('keydown', (e) => {
 /* create article */
 
 document.getElementById('button_create_post').addEventListener("click", function(e){
-  if (document.getElementById('title').value.length > 0 && document.getElementById('content_article').value.length > 0 && ocument.getElementById('content_article').value.length < 850) {
+  if (document.getElementById('title').value.length > 0 && document.getElementById('content_article').value.length > 0 && document.getElementById('content_article').value.length < 850) {
     const data = {
       "title" : document.getElementById('title').value,
       "content_article" : document.getElementById('content_article').value,
