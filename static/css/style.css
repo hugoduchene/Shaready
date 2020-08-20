@@ -267,6 +267,7 @@ button.button_registrer:hover{
 
 .content{
   flex:1 1 auto;
+  margin-top: 100px;
 }
 
 .content_user_account{
@@ -534,7 +535,6 @@ form.content_make_message{
 }
 
 .form_choose{
-  margin-top: 20px!important;
   border-bottom: 2px solid white;
   margin-bottom: 15px;
   display: flex;
@@ -644,10 +644,7 @@ form.content_make_message{
   color: red;
   cursor: pointer;
 }
-.test{
-  height: 100vh;
-  display: none;
-}
+
 .follow_button{
   margin-top: 2%;
   margin-bottom: 2%;
@@ -664,14 +661,17 @@ form.content_make_message{
 }
 
 .img_notifications{
-  max-width: 40px;
-  max-height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 .text_notifications{
   word-wrap: break-word;
   text-align: center;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .content_notifications{
@@ -685,6 +685,12 @@ form.content_make_message{
   margin: 0 auto;
 }
 
+.container_navbar{
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
 @media screen and (max-width: 767px){
   .image_home {
     display: none;
@@ -692,9 +698,11 @@ form.content_make_message{
 }
 
 @media screen and (max-width: 420px){
-  .form_choose{
-    z-index: 10;
-    position: relative;
+  .content{
+    margin-top: 8px!important;
+  }
+  .container_navbar{
+    position: inherit!important;
   }
   .box_notification{
     width: 100%!important;
@@ -714,7 +722,7 @@ form.content_make_message{
 
   .button_edit{
     position: fixed!important;
-    position: absolute;
+    z-index: 10;
     bottom: 10%;
     right: 0;
   }
@@ -791,7 +799,7 @@ form.content_make_message{
   }
 
   a.title_navbar{
-    font-size: 20px;
+    font-size: 30px;
   }
 
   a.button_nav{

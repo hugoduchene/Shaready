@@ -196,12 +196,11 @@ function getCookie(name) {
 }
 
 function infinite(item, action){
-  let i = 0
+  let i = 1
   let observer = new IntersectionObserver(function (observables) {
     observables.forEach(function (observable) {
       if (observable.intersectionRatio > 0.9) {
         i++
-        console.log(i)
         action(i)
 
       }

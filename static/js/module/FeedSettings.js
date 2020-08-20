@@ -23,7 +23,6 @@ function infinite_scroll_article_categories(i){
         
       })
     } else {
-      console.log(url + "api/articles/getarticlessubscribed" + "/" + i)
       const articles_categories = request(url + "api/articles/getarticlecategory/" + value_id + "/" + i)
       articles_categories.then(data => {
         ManageArticle(data)

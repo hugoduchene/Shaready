@@ -1,17 +1,18 @@
 {% load static %}
-
-<nav class="navbar">
-  <div class="container">
-    <a class="navbar-brand title_navbar" href="/">Shaready</a>
-    <span class="form-inline icon_navbar_user">
-        <a href="/user/search" class="button_user"><i class="fas fa-search"></i></a>
-        <a href="/user/myaccount/{{user.id}}" class="button_user"><i class="fas fa-user"></i></a>
-        <a href="/articles" class="button_user"><i class="fas fa-newspaper"></i></a>
-        <a href="/user/notifications" class="button_user button_notification" id="button_notif">
-          <div class="nbs_notif">0</div>
-          <i class="fas fa-bell"></i>
-        </a>
-      </span>
-  </div>
-  <script type="module" src="{% static '/js/main_navbar.js' %}"></script>
-</nav>
+<div class="container_navbar">
+  <nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand title_navbar" href="/">Shaready</a>
+      <span class="form-inline icon_navbar_user">
+          <a href="/user/search" class="button_user"><i class="fas fa-search"></i></a>
+          <a href="/user/myaccount/{{user.id}}" class="button_user"><i class="fas fa-user"></i></a>
+          <a href="/articles" class="button_user"><i class="fas fa-newspaper"></i></a>
+          <a href="/user/notifications" class="button_user button_notification" id="button_notif">
+            <div class="nbs_notif"></div>
+            <i class="fas fa-bell"></i>
+          </a>
+        </span>
+    </div>
+    <script type="module" src="{% static '/js/main_navbar.js' %}"></script>
+  </nav>
+</div>
