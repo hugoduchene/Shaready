@@ -1,4 +1,4 @@
-import {url , request } from './module/settings.js'
+import {url , request, insertPost } from './module/settings.js'
 
 /* get number of notifications */
 
@@ -15,4 +15,13 @@ request_nbs_notif.then(data => {
     }
    
 })
+
+/* read notification */
+const place_click_notifs = document.querySelectorAll('#button_notif')
+for (let i = 0; i < place_click_notifs.length; i++) {
+    place_click_notifs[i].addEventListener('click', (e) => {
+        const read_notif = insertPost({}, url + "api/notification/postmanagenotification")
+        
+    })
+}
 
