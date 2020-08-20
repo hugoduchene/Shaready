@@ -1,6 +1,6 @@
 import { get_button_edit, get_modal_class } from './module/popup_make_message.js';
 import { infinite, url, request, create_loader, hidden_loader, insertPost, ManageArticle } from './module/settings.js'
-import { create_categories, infinite_scroll } from './module/FeedSettings.js'
+import { create_categories, infinite_scroll_article_categories } from './module/FeedSettings.js'
 
 /* create trends articles */
 if (document.querySelector("#see_categories").value == "trends") {
@@ -71,6 +71,9 @@ document.querySelector("#see_categories").addEventListener("click", function(e){
     })
 
   }
+
+  let item = document.getElementById('end_body')
+  infinite(item, infinite_scroll_article_categories)
   
 });
 
@@ -105,9 +108,3 @@ document.getElementById('button_create_post').addEventListener("click", function
   }
 })
 
-/* infinite scroll */
-
-window.addEventListener("DOMContentLoaded", (event) => {
-  let item = document.getElementById('end_body')
-  infinite(item, infinite_scroll)
-});

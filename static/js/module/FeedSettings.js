@@ -1,4 +1,4 @@
-import { url, request, create_loader, hidden_loader, ManageArticle } from './settings.js'
+import { url, request, hidden_loader, ManageArticle } from './settings.js'
 
 function create_categories(name_place ,id_category, name_category) {
     const place_categories = document.getElementById(name_place)
@@ -11,7 +11,7 @@ function create_categories(name_place ,id_category, name_category) {
     return place_categories
 }
 
-function infinite_scroll(i){
+function infinite_scroll_article_categories(i){
     const place_article = document.getElementById('place_article')
     const value_id = document.getElementById('see_categories').value
     if (value_id == "trends") {
@@ -20,18 +20,19 @@ function infinite_scroll(i){
       const articles_subscribed = request(url + "api/articles/getarticlessubscribed" + "/" + i)
       articles_subscribed.then(data => {
         ManageArticle(data)
-        hidden_loader()
+        
       })
     } else {
+      console.log(url + "api/articles/getarticlessubscribed" + "/" + i)
       const articles_categories = request(url + "api/articles/getarticlecategory/" + value_id + "/" + i)
       articles_categories.then(data => {
         ManageArticle(data)
-        hidden_loader()
+        
       })
     }
   }
 
 export {
     create_categories,
-    infinite_scroll,
+    infinite_scroll_article_categories,
 }
