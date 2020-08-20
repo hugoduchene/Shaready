@@ -13,9 +13,16 @@
         <span class="name_user">{{user.username}} <i class="fas fa-check-square"></i></span>
 
         <div class="row info_user">
-          <div class="col-4 text_info">{{ nbs_follow }} <div class="text_follow_like">Abonné(s)</div></div>
-          <div class="col-4 follow_button">S'abonner</div>
-          <div class="col-4 text_info">{{ nbs_gold_like }} <div class="text_follow_like">Gold like(s)</div></div>
+          <div class="col-4 text_info">
+          <span id="nbs_follows">{{ nbs_follow }}</span>
+          <div class="text_follow_like">Follow</div>
+        </div>
+        {% if current_sub == 1 %}
+          <div class="col-4 follow_button already_follow">Followed</div>
+        {% else %}
+        <div class="col-4 follow_button">Follow</div>
+        {% endif %}
+          <div class="col-4 text_info">{{ nbs_gold_like }} <div class="text_follow_like">Gold like</div></div>
         </div>
       </section>
 

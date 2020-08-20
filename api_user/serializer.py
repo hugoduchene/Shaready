@@ -3,13 +3,17 @@ from user.models import Subscription, CustomUser
 
 class SubscriptionSerializer(serializers.ModelSerializer):
     nbs_follows = serializers.SerializerMethodField()
+    already_follow = serializers.SerializerMethodField()
+
+    def get_already_follow(self, obj):
+        return obj.already_follow
     
     def get_nbs_follows(self, obj):
         return obj.nbs_follows
     
     class Meta:
         model = Subscription
-        fields = ('id_receiving', 'nbs_follows')
+        fields = ('id_receiving', 'nbs_follows', 'already_follow')
 
 class AllInfosUserSerializer(serializers.ModelSerializer):
     info_user = serializers.SerializerMethodField()

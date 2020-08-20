@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from user.forms import RegistrationForm
 from django.contrib.auth import authenticate, login, logout
-from user.models import CustomUser
+from user.models import CustomUser, Subscription
 
 # Create your views here.
 class HomeViews(View):
@@ -28,10 +28,15 @@ class AccountView(View):
         infos_user = CustomUser.objects.get(pk=id_account)
         nbs_follows = infos_user.user_receiving_follow.count()
         nbs_gold_likes = infos_user.likearticle_set.filter(reaction=1).count()
+        current_sub = Subscription.objects.filter(
+            id_giving = request.user,
+            id_receiving = id_account,
+        ).count()
         return render(request, "user/account.html", context={
             'infos_user' : infos_user,
             'nbs_follow' :  nbs_follows,
             'nbs_gold_like' : nbs_gold_likes,
+            'current_sub' : current_sub,
         })          
 
 class MyAccountView(View):
@@ -39,9 +44,15 @@ class MyAccountView(View):
         if request.user.id == id_account:
             nbs_follows = request.user.user_receiving_follow.count()
             nbs_gold_likes = request.user.likearticle_set.filter(reaction=1).count()
+            current_sub = Subscription.objects.filter(
+                id_giving = request.user,
+                id_receiving = id_account,
+            ).count()
+            print(current_sub)
             return render(request, "user/myaccount.html", context={
                 'nbs_follow' :  nbs_follows,
                 'nbs_gold_like' : nbs_gold_likes,
+                'current_sub' : current_sub,
             })
         else:
             return redirect('feed')

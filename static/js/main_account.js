@@ -1,6 +1,5 @@
-import { infinite, url, request, create_loader, ManageArticle } from './module/settings.js'
+import { url, request, create_loader, ManageArticle, insertPost } from './module/settings.js'
 import { infinite_scroll_article_user, infinite_articles_user } from './module/settings_account.js'
-
 
 /* Put articles at the good place */
 
@@ -18,8 +17,29 @@ request_articles_user.then(data => {
 
 /* infinite scroll */
 
-
 window.addEventListener("DOMContentLoaded", (event) => {
     let item = document.getElementById('end_body')
     infinite_articles_user(item, infinite_scroll_article_user, id_user)
   });
+
+
+/* Subscribe button configuration */
+
+document.querySelector('.follow_button').addEventListener('click', (e) => {
+    const pseudoUser = document.querySelector(".name_user").textContent
+    const data = {
+        "id_receiving" : id_user
+    }
+    const request_subscribe = insertPost(data , url + "api/user/postsubscription/" + pseudoUser)
+    request_subscribe.then(data => {
+        document.getElementById("nbs_follows").textContent = data.nbs_follows
+
+        if (data.already_follow == 1) {
+            document.querySelector('.follow_button').classList.add('already_follow')
+            document.querySelector('.follow_button').textContent = 'Followed'
+        } else {
+            document.querySelector('.follow_button').classList.remove('already_follow')
+            document.querySelector('.follow_button').textContent = 'Follow'
+        }
+    })
+})

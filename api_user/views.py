@@ -29,17 +29,14 @@ class CreateSubscribe(APIView):
             ManageNotification().create_notification(request.user, pseudoUser, 1)
             if subscribe_is_exist == 0:
                 serializer.save(id_giving=request.user)
-                Subscription.nbs_follows = Subscription.objects.filter(
-                     id_receiving= request.data.get("id_receiving", "")
-                ).count()
-                return Response(serializer.data)
             else:
                 serializer.save(id_giving=request.user)
                 subscribe.delete()
-                Subscription.nbs_follows = Subscription.objects.filter(
-                    id_receiving= request.data.get("id_receiving", "")
-                ).count()
-                return Response(serializer.data)
+            Subscription.already_follow = subscribe.count()
+            Subscription.nbs_follows = Subscription.objects.filter(
+                id_receiving= request.data.get("id_receiving", "")
+            ).count()
+            return Response(serializer.data)
 
 class GetAllInfoUser(APIView):
 
@@ -66,6 +63,23 @@ class ResearchUser(APIView):
         serializer = ResearchUserSerializer(user, many=True)
         return Response(serializer.data)
         
+class AlreadySubscribed(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request, idReceiving):
+        already_sub = {
+            "already_sub" : Subscription.objects.filter(
+                id_giving = request.user,
+                id_receiving = idReceiving,
+                ).count()
+        }
+
+        return Response(already_sub)
+        
+        
+
+
 
         
 
