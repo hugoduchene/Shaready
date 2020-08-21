@@ -78,14 +78,13 @@ function event_like_article(like, pseudo, id_article){
       elt_element.firstChild.firstChild.nextSibling.nextSibling.textContent = data.nbs_likes[1]
       elt_element.firstChild.nextSibling.firstChild.nextSibling.nextSibling.textContent = data.nbs_likes[2]
       elt_element.firstChild.nextSibling.nextSibling.firstChild.nextSibling.nextSibling.textContent = data.nbs_likes[3]
-      elt_element.firstChild.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.nextSibling.textContent = data.nbs_likes[4]
     })
   })
 
   return like
 }
 
-function create_article(id_user, id_article, src_image, pseudo, date, title, content, nbs_love, nbs_like, nbs_dislike, nbs_fucklike){
+function create_article(id_user, id_article, src_image, pseudo, date, title, content, nbs_love, nbs_like, nbs_dislike, nbs_comment){
     const container_section = document.createElement('section')
     container_section.classList.add("content_user_articles")
 
@@ -121,14 +120,10 @@ function create_article(id_user, id_article, src_image, pseudo, date, title, con
     container_date.textContent = date
     container_pseudo_date.append(container_date)
 
-    const link_article = document.createElement('a')
-    link_article.href = url + "articles/" + id_article
-    article_container.append(link_article)
-
     const container_title = document.createElement("div")
     container_title.classList.add("title_post")
     container_title.textContent = title
-    link_article.append(container_title)
+    article_container.append(container_title)
 
     const container_post = document.createElement("div")
     container_post.classList.add("content_post")
@@ -155,10 +150,14 @@ function create_article(id_user, id_article, src_image, pseudo, date, title, con
     dislike = event_like_article(dislike, pseudo, id_article)
     container_like.append(dislike)
 
-    let fuck_like = create_like("fa-hand-middle-finger", nbs_fucklike, "fuck_like")
-    fuck_like.id = 4
-    fuck_like = event_like_article(fuck_like, pseudo, id_article)
-    container_like.append(fuck_like)
+    const container_comment_i = document.createElement('a')
+    container_comment_i.classList.add('col-3')
+    container_comment_i.href = url + "articles/" + id_article
+    const icon = document.createElement('i')
+    icon.classList.add('fas', 'fa-comment')
+    container_comment_i.append(icon)
+    icon.after(nbs_comment)
+    container_like.append(container_comment_i)
    
     return container_section
 
@@ -179,7 +178,7 @@ function ManageArticle(data){
       data[i].nbs_likes[1] = (data[i].nbs_likes[1] === undefined) ? 0 : data[i].nbs_likes[1],
       data[i].nbs_likes[2] = (data[i].nbs_likes[2] === undefined) ? 0 : data[i].nbs_likes[2],
       data[i].nbs_likes[3] = (data[i].nbs_likes[3] === undefined) ? 0 : data[i].nbs_likes[3],
-      data[i].nbs_likes[4] = (data[i].nbs_likes[4] === undefined) ? 0 : data[i].nbs_likes[4],
+      data[i].nbs_comments,
     ))
   }
 }

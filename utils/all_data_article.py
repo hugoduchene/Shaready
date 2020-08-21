@@ -12,7 +12,7 @@ class AllDataArticle():
             ).annotate(
                     total=Count('reaction')
             )
-            
+            obj.nbs_comments = obj.comment_set.count()
             obj.nbs_likes = {v['reaction']:v['total'] for v in nbs_likes}
             obj.info_user = {
                 "id_user" : obj.id_user.id,

@@ -32,6 +32,10 @@ class ArticleCreateSerailizer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     nbs_likes = serializers.SerializerMethodField()
     info_user = serializers.SerializerMethodField()
+    nbs_comments = serializers.SerializerMethodField()
+
+    def get_nbs_comments(self, obj): 
+        return obj.nbs_comments
     
     def get_nbs_likes(self, obj): 
         return obj.nbs_likes

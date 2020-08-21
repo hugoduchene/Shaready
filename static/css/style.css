@@ -359,7 +359,7 @@ button.button_registrer:hover{
   left: 94%;
 }
 
-.fa-heart, .fa-thumbs-up, .fa-thumbs-down, .fa-hand-middle-finger{
+.fa-heart, .fa-thumbs-up, .fa-thumbs-down, .fa-comment{
   font-size: 25px;
 }
 
@@ -378,8 +378,8 @@ button.button_registrer:hover{
   cursor: pointer;
 }
 
-.fa-hand-middle-finger:hover{
-  color: #760000;
+.fa-comment:hover{
+  color: rgb(255, 57, 57);
   cursor: pointer;
 }
 
@@ -815,7 +815,7 @@ form.content_make_message{
     display: none;
   }
 
-  .fa-heart, .fa-thumbs-up, .fa-thumbs-down, .fa-hand-middle-finger, .fa-search{
+  .fa-heart, .fa-thumbs-up, .fa-thumbs-down, .fa-comment{
     font-size: 20px;
   }
 
@@ -909,6 +909,6 @@ span.row{
 }
 
 
-.fa-heart, .fa-thumbs-up, .fa-thumbs-down, .fa-hand-middle-finger{
+.fa-heart, .fa-thumbs-up, .fa-thumbs-down, .fa-comment{
   margin-right: 3px;
 }

@@ -3,7 +3,7 @@ import { create_comment } from './module/settings_article_only.js'
 
 /* Event on like in article_only */
 
-const all_reaction = ['.love', '.like', ".dislike", '.fuck_like']
+const all_reaction = ['.love', '.like', ".dislike"]
 const pseudo_author = document.querySelector('#pseudo_author').textContent
 const id_article = new URL(window.location.href).pathname.split('/')[2]
 let place_nbs_like = document.querySelectorAll('.nbs_like')

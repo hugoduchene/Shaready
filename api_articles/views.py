@@ -80,7 +80,7 @@ class CreateLikeArticle(APIView):
                 else:
                     serializer.save(id_article=article[0], id_user=request.user)
                 
-                LikeArticle.nbs_likes = {i+1 : LikeArticle.objects.filter(id_article=idArticle, reaction=i+1).count()for i in range(4)}
+                LikeArticle.nbs_likes = {i+1 : LikeArticle.objects.filter(id_article=idArticle, reaction=i+1).count()for i in range(3)}
                 return Response(serializer.data)
 
             else:
