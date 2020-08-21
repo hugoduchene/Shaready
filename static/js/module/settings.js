@@ -62,13 +62,18 @@ function create_like(type_like, nbs_like, type_class){
 
 }
 
+function post_like(elt_like, pseudo, id_article) {
+  const data = {
+    "reaction" : elt_like.id
+  }
+  const post_article = insertPost(data, url + "api/articles/postlikearticle/" + id_article + "/" + pseudo)
+
+  return post_article
+}
+
 function event_like_article(like, pseudo, id_article){
   like.addEventListener('click', (e) => {
-    const data = {
-      "reaction" : like.id
-    }
-    const post_article = insertPost(data, url + "api/articles/postlikearticle/" + id_article + "/" + pseudo)
-    post_article.then(data => {
+    post_like(like, pseudo, id_article).then(data => {
       const elt_element = like.parentNode
       elt_element.firstChild.firstChild.nextSibling.nextSibling.textContent = data.nbs_likes[1]
       elt_element.firstChild.nextSibling.firstChild.nextSibling.nextSibling.textContent = data.nbs_likes[2]
@@ -214,6 +219,8 @@ function infinite(item, action){
 }
 
 export {
+    post_like,
+    event_like_article,
     infinite,
     ManageArticle,
     insertPost,

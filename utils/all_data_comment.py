@@ -15,7 +15,8 @@ class AllDataComment():
             obj.nbs_likes = {v['reaction_comment']:v['total'] for v in nbs_likes}
             obj.info_user = {
                 "photo" : str(obj.id_user.image_profile),
-                "pseudo" : obj.id_user.username
+                "pseudo" : obj.id_user.username,
+                "id_user_comment" : obj.id_user.id,
             }
 
         serializer = CommentSerializer(objects, many=True)

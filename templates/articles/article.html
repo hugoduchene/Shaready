@@ -2,21 +2,35 @@
 <section class="content_user_articles">
     <article class="post_user">
       <div class="row box_pseudo_date">
-        <img src="{% static '/assets/img/user-default.png' %}" class="col-4 image_user_article" alt="">
+        {% static '/assets/img/' as img_user%}
+        <a href="/user/myaccount/{{ info_user.id }}">
+          <img src="{{img_user}}{{info_user.image_profile}}" class="col-4 image_user_article" alt="">
+        </a>
         <div class="col-7">
-          <div class="pseudo_comments">Pseudo</div>
-          <div class="date_comments">11/02/2020</div>
+          <div class="pseudo_comments" id="pseudo_author">{{ info_user.username }}</div>
+          <div class="date_comments">{{ article.date_article }}</div>
         </div>
       </div>
-      <div class="title_post">Titre de l'article</div><br>
+      <div class="title_post">{{ article.title }}</div><br>
 
-      <div class="content_post">Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</div>
-
+      <div class="content_post">{{ article.content_article }}</div>
       <div class="row like_user">
-          <div class="col-3 love"><i class="fas fa-heart"></i> 0</div>
-          <div class="col-3 like"><i class="fas fa-thumbs-up"></i> 0</div>
-          <div class="col-3 dislike"><i class="fas fa-thumbs-down"></i> 0</div>
-          <div class="col-3 fuck_like"><i class="fas fa-hand-middle-finger"></i> 0</div>
+          <div class="col-3 love" id="1">
+            <i class="fas fa-heart"></i>
+            <span class="nbs_like">{{ nbs_like.1 }}</span>
+          </div>
+          <div class="col-3 like" id="2">
+            <i class="fas fa-thumbs-up"></i> 
+            <span class="nbs_like">{{ nbs_like.2 }}</span>
+          </div>
+          <div class="col-3 dislike" id="3">
+            <i class="fas fa-thumbs-down"></i> 
+            <span class="nbs_like">{{ nbs_like.3 }}</span>
+          </div>
+          <div class="col-3 fuck_like" id="4">
+            <i class="fas fa-hand-middle-finger"></i> 
+            <span class="nbs_like">{{ nbs_like.4 }}</span>
+          </div>
       </div>
     </article>
 </section>

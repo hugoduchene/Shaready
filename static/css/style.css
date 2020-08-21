@@ -190,7 +190,7 @@ a.button_nav:hover{
 }
 
 .box_registrer{
-  margin-top: -100px!important;
+  margin-top: -50px!important;
 }
 
 .box_connexion{
@@ -392,6 +392,7 @@ button.button_registrer:hover{
 }
 
 .form_comments{
+  padding-bottom: 3px;
   text-align: center;
   width: 80%;
   margin: 0 auto;
@@ -407,13 +408,13 @@ button.button_registrer:hover{
 
 .form_comments{
   background-color: #FFFFFF;
-  margin-top: -10px;
+  margin-top: -12px;
 }
 
 .input_comment{
   background-color: #F5F5F5;
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   border: none;
   border-radius: 10px;
 }
@@ -422,7 +423,7 @@ button.button_registrer:hover{
   background-color:rgb(255, 57, 57);
   color: white;
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   border-radius: 6px;
   border:none;
   transition: 0.2s;
@@ -439,8 +440,8 @@ button.button_registrer:hover{
 }
 
 .image_comments{
-  max-width: 40px;
-  max-height: 40px;
+  width: 40px;
+  height: 40px;
 }
 .like_comments{
   font-size: 15px;
@@ -472,7 +473,6 @@ button.button_registrer:hover{
 
 .box_comments{
   border: 3px solid white;
-  margin-bottom: 40px;
   width: 80%;
   margin: 0 auto;
   background-color: white;
@@ -611,11 +611,6 @@ form.content_make_message{
   color: rgb(255, 57, 57);
 }
 
-.nav_only_article{
-  margin-top: 50px;
-
-}
-
 .choose_categorie{
   color: rgb(124, 124, 124);
 }
@@ -701,6 +696,10 @@ form.content_make_message{
   z-index: 1;
 }
 
+.place_comment{
+  margin-bottom: 50px;
+}
+
 @media screen and (max-width: 767px){
   .image_home {
     display: none;
@@ -720,7 +719,7 @@ form.content_make_message{
   .box_notification{
     width: 100%!important;
   }
-  .col-9{
+  .col-9.select_categories{
     flex: none;
     max-width: 100%;
   }
@@ -791,6 +790,14 @@ form.content_make_message{
   .box_connexion{
     padding-top: 35%!important;
   }
+
+  .form_comments, .box_comments{
+    width: 100%;
+  }
+
+  .nav_only_article{
+    margin-top: 15px!important;
+  }
 }
 
 
@@ -803,9 +810,6 @@ form.content_make_message{
 
   .box_connexion{
     padding-top: 5%;
-  }
-  .box_comments{
-    margin-bottom: 50px;
   }
   .image_home{
     display: none;
@@ -827,10 +831,6 @@ form.content_make_message{
   .content_post{
     font-size: 15px;
   }
-  .comments{
-    font-size: 12px;
-    text-align: center;
-  }
 
   .button_comments, .input_comment{
     padding: 8px;
@@ -851,6 +851,11 @@ form.content_make_message{
   .box_registrer{
     margin-top: 0px!important;
   }
+}
+
+.comments{
+  font-size: 12px;
+  text-align: center;
 }
 
 
@@ -878,6 +883,10 @@ form.content_make_message{
 .already_follow:hover{
   background-color: rgb(255, 57, 57);
   color: white;
+}
+
+span.row{
+  width: 100%;
 }
 
 /* loader */

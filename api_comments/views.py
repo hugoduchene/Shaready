@@ -20,9 +20,10 @@ from api_comments.serializer import (
 class GetAllCommentArticle(APIView):
 
     def get(self, request, idArticle, idPage):
-        all_comments = Comment.objects.filter(id=idArticle).order_by('-date_comment')
+        all_comments = Comment.objects.filter(id_article=idArticle).order_by('-date_comment', 'likecomment')
+        article = Article.objects.get(pk=idArticle)
         pagination = Paginator(all_comments, 10)
-        objects_page = pagination.get_page(idPage).object_list
+        objects_page = pagination.page(idPage).object_list
         serializer = AllDataComment().get_all_infos_comment(objects_page)
 
         return Response(serializer.data)
@@ -46,19 +47,19 @@ class CreateLikeCommentArticle(APIView):
             serializer = LikeCommentSerializer(data=request.data)
             if serializer.is_valid():
                 ManageNotification().create_notification(request.user, pseudoUser, 3)
-                LikeComment.nbs_likes = LikeComment.objects.filter(id_comments=idComment).values('reaction_comment').annotate(
-                    total=Count('reaction_comment')
-                )
+                
                 if like_is_exit > 0:
                     like_user.delete()
-                    serializer.save(id_comments=comment[0], id_user=request.user)
-                    return Response(serializer.data)
-                else:
-                    serializer.save(id_comments=comment[0], id_user=request.user)
-                    return Response(serializer.data)
+                
+                serializer.save(id_comments=comment[0], id_user=request.user)
+                LikeComment.nbs_likes = {
+                    1 : LikeComment.objects.filter(id_comments=idComment, reaction_comment=1).count(),
+                    2 : LikeComment.objects.filter(id_comments=idComment, reaction_comment=2).count(),
+                }
+                return Response(serializer.data)
             else:
                 return Response(
-                    "ERROR : serialiazer pas valid", 
+                    "ERROR : serialiazer pas valide", 
                     status=status.HTTP_400_BAD_REQUEST
                 )
         else:
@@ -83,7 +84,8 @@ class CreateCommentArticle(APIView):
             if serializer.is_valid(raise_exception=True):
                 Comment.info_user = {
                     "image_profile" : str(CustomUser.objects.get(pk=1).image_profile),
-                    "pseudo" : request.user.username
+                    "pseudo" : request.user.username,
+                    "date" : timezone.now()
                 }
                 serializer.save(id_article=article[0], id_user=request.user, date_comment=timezone.now())
                 return Response(serializer.data)

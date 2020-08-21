@@ -6,27 +6,17 @@
 <main class="content container nav_only_article">
   {% include 'articles/article.html' %}
 
-  <form class="row form_comments" action="" method="post">
+  <form class="row form_comments" action="" method="post" id="form_comment">
+    {% csrf_token %}
     <div class="col-9"><input type="text" class="input_comment" placeholder="Commentaire..."></div>
-    <div class="col-3"><button type="submit" class="button_comments"><i class="far fa-paper-plane"></i></button></div>
+    <div class="col-3"><button class="button_comments" id="button_comments"><i class="far fa-paper-plane"></i></button></div>
   </form>
 
-  <section class="box_comments">
-    <div class="comments_other_user">
-      <div class="row">
-        <div class="col-2 container_image_comments"><img src="{% static '/assets/img/user-default.png' %}" class="image_comments" alt=""></div>
-        <div class="col-10">
-          <div class="pseudo_comments">Pseudo</div>
-          <div class="date_comments">11/12/2020</div>
-        </div>
-        <div class="col-12 comments">Exposé par lequel on explique, on interprète, on juge un texte ; notes et éclaircissements destinés à faciliter l'intelligence d'un texte : Commentaire littéraire, juridique.</div>
-        <div class="col-6 like_comments"><i class="far fa-thumbs-up like_comments"></i> 0</div>
-        <div class="col-6 like_comments"><i class="far fa-thumbs-down like_comments"></i> 0</div>
-      </div>
-    </div>
+  <section class="place_comment">
+    <div class="box_comment"></div>
   </section>
 
   {% include 'navbar_mobile_user.html' %}
-
+  <script type="module" src="{% static '/js/main_article_only.js' %}"></script>
 </main>
 {% endblock %}
