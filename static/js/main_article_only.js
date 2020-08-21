@@ -1,4 +1,4 @@
-import { url, request ,post_like, infinite, insertPost } from './module/settings.js'
+import { url, request ,post_like, infinite, insertPost, create_loader, hidden_loader } from './module/settings.js'
 import { create_comment } from './module/settings_article_only.js'
 
 /* Event on like in article_only */
@@ -22,9 +22,10 @@ for (let i = 0; i < all_reaction.length; i++) {
 }
 
 /* manages the display of comments */
+const place_comment = document.querySelector('.place_comment')
+place_comment.append(create_loader())
 
 function infinite_comments(i) {
-    const place_comment = document.querySelector('.place_comment')
     const request_comment = request(url + "api/comments/getall/" + id_article + "/" + i)
     request_comment.then(data => {
         for (let x = 0; x < data.length; x++) {
@@ -38,6 +39,7 @@ function infinite_comments(i) {
                 data[x].id
             ))
         }
+        hidden_loader()
     })
 }
 
