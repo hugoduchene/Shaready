@@ -60,8 +60,8 @@ a:hover{
 }
 
 img.image_user_change_pic{
-  max-width:200px;
-  max-height: 200px;
+  width:200px;
+  height: 200px;
 }
 
 .button_import_pic:hover .fa-camera{
@@ -149,7 +149,7 @@ a.component_footer{
 
 .image_user_article{
   max-width: 50px;
-  max-height: 50px;
+  height: 50px;
 }
 
 .image_user{
@@ -700,6 +700,28 @@ form.content_make_message{
   margin-bottom: 50px;
 }
 
+.button_change_photo{
+  width: 30%;
+  border: none;
+  background-color: rgb(255, 57, 57);
+  color:white;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 25px;
+}
+
+.button_change_photo:hover{
+  position: relative;
+  z-index: 100;
+  background-color: white;
+  color: rgb(255, 57, 57);
+  cursor: pointer;
+}
+
+.container_change_button{
+  width: 100%;
+  text-align: center;
+}
 @media screen and (max-width: 767px){
   .image_home {
     display: none;
@@ -707,6 +729,9 @@ form.content_make_message{
 }
 
 @media screen and (max-width: 420px){
+  .button_change_photo{
+    width: 50%;
+  }
   .box_registrer{
     padding-top: 30%;
   }

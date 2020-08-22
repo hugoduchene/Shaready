@@ -4,25 +4,37 @@
 
 <main class="content">
     <div class="container">
-        <section class="container_import_pic">
-            {% load static %}
-            <img class="image_user_change_pic" src="{% static '/assets/img/user-default.png' %}" alt=""><br>
-            <div class="box_button_import">
-                <input type="file" name="file" id="file" class="import_pic">
-                <label for="file" class="button_import_pic"><i class="fas fa-camera"></i></label>
+
+        <form action="" method="post" enctype="multipart/form-data" id="img_user">
+            {% csrf_token %}
+            <div class="container_import_pic">
+                {% load static %}
+                {% static '/assets/img/' as path_img %}
+                <img class="image_user_change_pic" src="{{path_img}}{{user.image_profile}}" alt=""><br>
+                    <div class="box_button_import">
+                        {{ form.image_profile }}
+                        <label for="file" class="button_import_pic">{{form.image_profile.label | safe}}</label>
+                    </div>
             </div>
-        </section>
+            
+            <div class="container_change_button">
+                <input type="submit" name="" id="" class="button_change_photo" value="Change">
+            </div>
+
+
+        </form>
 
         <section class="container_change_pseudo">
-            <form action="" class="row form_change_pseudo">
-                <input type="text" placeholder="pseudo" class="col-8 input_change_pseudo">
+            <form action="" class="row form_change_pseudo" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder=" Pseudo" class="col-8 input_change_pseudo">
                 <input type="submit" name="" id="" class="col-4 button_change_pseudo">
             </form>
         </section>
     </div>
 
 
-    
+    <script type="module" src="{% static '/js/main_parameter_account.js' %}"></script>
     {% include 'navbar_mobile_user.html' %}
 </main>
 

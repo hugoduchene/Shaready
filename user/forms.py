@@ -23,6 +23,16 @@ class RegistrationForm(UserCreationForm):
         widgets = { 'username' : forms.TextInput(attrs={ 'class': 'input_registrer', 'placeholder' : 'Pseudo'}),
                     'email' : forms.EmailInput(attrs={ 'class' : 'input_registrer', 'placeholder' : 'Mail'}),
                     }
-        
+
+class ChangePictureForm(forms.ModelForm):
+    image_profile = forms.ImageField(
+        label = ('<i class="fas fa-camera"></i>'),
+        widget = forms.FileInput(attrs={'class' : 'import_pic', 'id' : 'file'})
+    )
+
+    class Meta:
+        model = CustomUser
+        fields = ('image_profile',)
+             
 
         

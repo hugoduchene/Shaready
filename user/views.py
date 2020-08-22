@@ -4,6 +4,7 @@ from django.views.generic.base import View
 from user.forms import RegistrationForm
 from django.contrib.auth import authenticate, login, logout
 from user.models import CustomUser, Subscription
+from user.forms import ChangePictureForm
 
 # Create your views here.
 class HomeViews(View):
@@ -48,7 +49,6 @@ class MyAccountView(View):
                 id_giving = request.user,
                 id_receiving = id_account,
             ).count()
-            print(current_sub)
             return render(request, "user/myaccount.html", context={
                 'nbs_follow' :  nbs_follows,
                 'nbs_gold_like' : nbs_gold_likes,
@@ -66,5 +66,20 @@ class SearchUserView(TemplateView):
 class NotificationsView(TemplateView):
     template_name = "user/notifications.html"
 
-class ParameterAccountView(TemplateView):
-    template_name = "user/ParameterAccount.html"
+class ParameterAccountView(View):
+    def post(self, request, *args, **Kwargs):
+        user = CustomUser.objects.get(pk=request.user.id)
+        form = ChangePictureForm(request.POST, request.FILES, instance=user)
+        
+        if form.is_valid():
+            form.save()
+            return render(request, "user/ParameterAccount.html", context={
+                "form" : form,
+            })
+        
+    def get(self, request, *args, **Kwargs):
+        user = CustomUser.objects.get(pk=request.user.id)
+        form = ChangePictureForm(instance=user)
+        return render(request, "user/ParameterAccount.html", context={
+            "form" : form,
+        })
