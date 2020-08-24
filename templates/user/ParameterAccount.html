@@ -5,7 +5,7 @@
 <main class="content">
     <div class="container">
 
-        <form action="" method="post" enctype="multipart/form-data" id="img_user">
+        <form action="" method="post" enctype="multipart/form-data" id="img_user" class="form_parameter">
             {% csrf_token %}
             <div class="container_import_pic">
                 {% load static %}
@@ -24,12 +24,8 @@
 
         </form>
 
-        <section class="container_change_pseudo">
-            <form action="" class="row form_change_pseudo" method="post">
-                {% csrf_token %}
-                <input type="text" placeholder=" Pseudo" class="col-8 input_change_pseudo">
-                <input type="submit" name="" id="" class="col-4 button_change_pseudo">
-            </form>
+        <section class="button_logout"></section>
+            <a href="/user/logout"><div class="btn_logout">Logout</div></a>
         </section>
     </div>
 
