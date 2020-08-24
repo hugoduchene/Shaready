@@ -1,11 +1,18 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, View
-from articles.models import Article
+from articles.models import Article, Categories
 
 # Create your views here.
 
-class FeedViews(TemplateView):
-    template_name = "articles/feed.html"
+class FeedViews(View):
+    
+    def get(self, request, *args, **Kwargs):
+        all_categories = Categories.objects.all()
+
+        return render(request, "articles/feed.html", context={
+            "categories" : all_categories
+        })
+
 
 class ArticlesOnlyViews(View):
     

@@ -10,7 +10,11 @@
       <form class="box_make_message content_make_message" id="form_create_article">
         <input type="text" class="title_create_post" id="title" placeholder="Titre"><br>
         <textarea class="content_create_post" rows="3" cols="80" id="content_article" placeholder="Votre article ,..."></textarea><br>
-        <select name="pets" id="add_in_categories" class="choose_categorie_create"></select>
+        <select name="pets" id="add_in_categories" class="choose_categorie_create">
+          {% for x in categories %}
+            <option value="">{{ x.name_category }}</option>{{ x }}
+          {% endfor %}
+        </select>
         <input type="button" class="button_create_post" id="button_create_post" value="Envoyer">
         <div class="number_caracter" id="number_character">0</div>
       </form>
@@ -21,6 +25,9 @@
       <select name="pets" id="see_categories" class="choose_categorie">
         <option value="trends" id="trends">Tendances</option>
         <option value="subscription" id="subscription">Abonnements</option>
+        {% for i in categories %}
+            <option value="{{ i.id }}" id="{{ i.id }}">{{ i.name_category }}</option>
+        {% endfor %}
       </select>
     </div>
 

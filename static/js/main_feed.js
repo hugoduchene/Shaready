@@ -1,6 +1,6 @@
 import { get_button_edit, get_modal_class } from './module/popup_make_message.js';
 import { infinite, url, request, create_loader, hidden_loader, insertPost, ManageArticle } from './module/settings.js'
-import { create_categories, infinite_scroll_article_categories } from './module/FeedSettings.js'
+import { infinite_scroll_article_categories } from './module/FeedSettings.js'
 
 /* create trends articles */
 if (document.querySelector("#see_categories").value == "trends") {
@@ -29,17 +29,6 @@ get_modal_class().onclick = function(e) {
     get_modal_class().classList.toggle("invisible");
   }
 }
-
-/* Manage categories in template */
-
-const categories = request(url + "api/articles/categories/")
-
-categories.then(data => {
-  for (let i = 0; i < data.length; i++) {
-    create_categories("see_categories",data[i].id, data[i].name_category)
-    create_categories("add_in_categories",data[i].id, data[i].name_category)
-  }
-})
 
 /* display of the articles according to their category */
 
