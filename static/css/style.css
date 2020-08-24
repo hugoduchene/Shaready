@@ -635,6 +635,7 @@ form.content_make_message{
 }
 
 .box_user_search{
+  border-radius: 6px;
   text-align: center;
   border: 3px solid #FF3939;
   padding-top: 2%;
