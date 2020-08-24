@@ -5,11 +5,11 @@
 <main class="content">
   <div class="container box_connexion">
     <form class="form_connexion" action="" method="post">
-        <div class="title_connexion">Connexion</div>
+        <div class="title_connexion">Login</div>
         {% csrf_token %}
         {{ form.username }}<br/>
         {{ form.password }}<br/>
-        <button type="submit" class="button_connexion">Connexion</button>
+        <button type="submit" class="button_connexion">Login</button>
     </form>
   </div>
 

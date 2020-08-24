@@ -21,6 +21,5 @@ function infinite_scroll_article_categories(i){
   }
 
 export {
-    create_categories,
     infinite_scroll_article_categories,
 }
