@@ -1,9 +1,12 @@
 body, html{
   background-color: #F5F5F5;
-  /*height: 100%;*/
 }
 img {
   border-radius: 6px;
+}
+
+img.logo_nav{
+  width: 145px;
 }
 
 .text_follow_like{
@@ -165,7 +168,6 @@ a.component_footer{
   background-color: #FFFFFF;
   border-bottom: 1px solid #FF3939;
   box-shadow: 2px 2px 2px #FF3939;
-  padding-bottom: 60px;
 }
 
 a.title_navbar{
@@ -310,6 +312,7 @@ button.button_registrer:hover{
 
 
 .title_post{
+  text-transform: uppercase;
   word-wrap: break-word;
   font-style: italic;
   font-weight: bold;
@@ -336,7 +339,7 @@ button.button_registrer:hover{
 }
 
 .content_post{
-  font-size: 19px;
+  font-size: 15px;
   word-wrap: break-word;
 }
 
@@ -545,6 +548,7 @@ form.content_make_message{
 }
 
 .form_choose{
+  margin-top: 15px!important;
   border-bottom: 2px solid white;
   margin-bottom: 15px;
   display: flex;
@@ -599,6 +603,7 @@ form.content_make_message{
   width: 100%;
   border: none;
   margin-bottom: 30px;
+  background-color: white;
 }
 
 .button_connexion:hover{
@@ -721,7 +726,29 @@ form.content_make_message{
 .container_change_button{
   width: 100%;
   text-align: center;
+  margin-top: 5px;
 }
+
+.button_logout{
+  padding-top: 5%;
+}
+
+.btn_logout:hover{
+  background-color: white;
+  color: rgb(255, 57, 57);
+}
+
+.btn_logout{
+  transition: 0.2s;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+  color:white;
+  background-color: rgb(255, 57, 57);
+  width: 20%;
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 767px){
   .image_home {
     display: none;
@@ -881,6 +908,10 @@ form.content_make_message{
 .comments{
   font-size: 12px;
   text-align: center;
+}
+
+.form_parameter{
+  margin-top: 15px;
 }
 
 
