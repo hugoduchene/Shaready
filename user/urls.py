@@ -7,6 +7,7 @@ from user.views import (
     NotificationsView,
     ParameterAccountView,
     AccountView,
+    LegalNoticeView,
 )
 
 urlpatterns = [
@@ -17,4 +18,5 @@ urlpatterns = [
     path('search', SearchUserView.as_view()),
     path('notifications', NotificationsView.as_view()),
     path('account/parameter', ParameterAccountView.as_view()),
+    path('cgu/legalnotice', LegalNoticeView.as_view()),
 ]

@@ -140,16 +140,6 @@ img.image_user_change_pic{
   background-color: #FF3939;
 }
 
-.box_footer{
-  text-align: center;
-}
-
-a.component_footer{
-  text-decoration: none;
-  color: white;
-  margin-right: 5px;
-}
-
 .image_user_article{
   max-width: 50px;
   height: 50px;
@@ -762,6 +752,30 @@ form.content_make_message{
   padding-left: 0;
 }
 
+.title_footer{
+  width: 95%;
+  text-align: left;
+  color: white;
+}
+
+.component_footer{
+  font-style: italic;
+  padding-left: 2%;
+  text-align: left;
+  color: white;
+}
+.component_footer:hover{
+  color: white;
+}
+
+.copy_footer{
+  color: white;
+  margin-top: -10px;
+  padding: 0.5%;
+  background-color: rgb(222, 46, 46);
+  text-align: center;
+  width: 100%;
+}
 @media screen and (max-width: 435px){
   img.logo_nav{
     width: 120px;
@@ -775,6 +789,9 @@ form.content_make_message{
 }
 
 @media screen and (max-width: 420px){
+  .title_footer{
+    padding-left: 0%;
+  }
   img.logo_nav{
     width: 150px;
   }
@@ -841,10 +858,14 @@ form.content_make_message{
     width: 100%;
     background-color: white;
     text-align: center;
+    z-index: 9;
 
   }
+  .row{
+    margin: 0px;
+  }
 
-  .footer{
+  footer{
     margin-bottom: 53px;
   }
 

@@ -60,16 +60,6 @@ class MyAccountView(View):
         else:
             return redirect('feed')
 
-class ConnexionView(LoginView):
-    template_name = "user/login.html"
-    authentication_form = CustomUserForms
-
-class SearchUserView(TemplateView):
-    template_name = "user/search_user.html"
-
-class NotificationsView(TemplateView):
-    template_name = "user/notifications.html"
-
 class ParameterAccountView(View):
     def post(self, request, *args, **Kwargs):
         user = CustomUser.objects.get(pk=request.user.id)
@@ -94,5 +84,18 @@ class ParameterAccountView(View):
         return render(request, "user/ParameterAccount.html", context={
             "form" : form,
         })
+
+class ConnexionView(LoginView):
+    template_name = "user/login.html"
+    authentication_form = CustomUserForms
+
+class SearchUserView(TemplateView):
+    template_name = "user/search_user.html"
+
+class NotificationsView(TemplateView):
+    template_name = "user/notifications.html"
+
+class LegalNoticeView(TemplateView):
+    template_name = "cgu/legalnotice.html"
 
 
