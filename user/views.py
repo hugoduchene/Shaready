@@ -25,7 +25,7 @@ class HomeViews(View):
                 login(request, user)
                 
                 return redirect("feed")
-        return render(request, "user/home.html")
+        return render(request, "user/home.html", context={'form' : form})
     
 class AccountView(View):
     def get(self, request, id_account, *args, **Kwargs) :

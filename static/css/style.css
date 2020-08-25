@@ -755,6 +755,13 @@ form.content_make_message{
   margin: 0 auto;
 }
 
+.errorlist{
+  color: rgb(255, 57, 57);
+  margin: 0;
+  list-style: none;
+  padding-left: 0;
+}
+
 @media screen and (max-width: 435px){
   img.logo_nav{
     width: 120px;

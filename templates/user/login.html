@@ -9,6 +9,7 @@
         {% csrf_token %}
         {{ form.username }}<br/>
         {{ form.password }}<br/>
+        {{ form.errors }}
         <button type="submit" class="button_connexion">Login</button>
     </form>
   </div>
