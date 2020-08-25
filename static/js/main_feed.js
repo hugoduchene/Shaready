@@ -68,18 +68,18 @@ document.querySelector("#see_categories").addEventListener("click", function(e){
 
 /* Manage counter of character count */
 
-document.getElementById('content_article').addEventListener('keydown', (e) => {
+
+document.getElementById('content_article').addEventListener('input', (e) => {
   let nbs_character = document.getElementById('content_article').value.length
   document.getElementById('number_character').textContent = nbs_character
-  if (nbs_character > 850) {
+  if (nbs_character >= 850) {
     document.getElementById('number_character').style.color = 'red'
   } else if (nbs_character < 850) {
     document.getElementById('number_character').style.color = 'rgb(124, 124, 124)'
   }
-
-  
-
 })
+
+
 
 /* create article */
 

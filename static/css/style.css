@@ -293,6 +293,7 @@ button.button_registrer:hover{
 }
 
 .name_user{
+  text-transform: uppercase;
   font-size: 35px;
   color: red;
 }
@@ -459,17 +460,18 @@ button.button_registrer:hover{
   text-align: left;
   font-size: 15px;
 }
-
-
 .date_comments{
   font-weight: bold;
   text-align: left;
   font-size: 10px;
 }
+
 .comments{
+  
   padding-left: 50px;
   padding-right: 50px;
 }
+
 .box_pseudo_date{
   width: 100%;
   margin: 0 auto;
@@ -753,6 +755,12 @@ form.content_make_message{
   margin: 0 auto;
 }
 
+@media screen and (max-width: 435px){
+  img.logo_nav{
+    width: 120px;
+  }
+}
+
 @media screen and (max-width: 767px){
   .image_home {
     display: none;
@@ -760,6 +768,9 @@ form.content_make_message{
 }
 
 @media screen and (max-width: 420px){
+  img.logo_nav{
+    width: 150px;
+  }
   a.button_nav{
     padding-right: 50px!important;
     padding-left: 50px!important;
@@ -917,6 +928,7 @@ form.content_make_message{
 }
 
 .comments{
+  word-wrap: break-word;
   font-size: 12px;
   text-align: center;
 }
