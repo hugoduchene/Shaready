@@ -1,10 +1,13 @@
+import base64
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from user.forms import RegistrationForm
 from django.contrib.auth import authenticate, login, logout
 from user.models import CustomUser, Subscription
-from user.forms import ChangePictureForm
+from user.forms import ChangePictureForm, CustomUserForms
+from django.contrib.auth.views import LoginView
+from django.core.files.base import ContentFile
 
 # Create your views here.
 class HomeViews(View):
@@ -57,8 +60,9 @@ class MyAccountView(View):
         else:
             return redirect('feed')
 
-class ConnexionView(TemplateView):
-    template_name = "user/connexion.html"
+class ConnexionView(LoginView):
+    template_name = "user/login.html"
+    authentication_form = CustomUserForms
 
 class SearchUserView(TemplateView):
     template_name = "user/search_user.html"
@@ -70,12 +74,19 @@ class ParameterAccountView(View):
     def post(self, request, *args, **Kwargs):
         user = CustomUser.objects.get(pk=request.user.id)
         form = ChangePictureForm(request.POST, request.FILES, instance=user)
+
+        img_data = request.POST.get('cropped_img')
+        format, imgstr = img_data.split(';base64,')
+        ext = format.split('/')[-1]
+        data = ContentFile(base64.b64decode(imgstr)) 
+        if user.image_profile != "user-default.png":
+            user.image_profile.delete(save=True) 
+        file_name = str(user.id) + '_' + str(user.username) + '.' + ext
+        user.image_profile.save(file_name, data, save=True) 
         
-        if form.is_valid():
-            form.save()
-            return render(request, "user/ParameterAccount.html", context={
-                "form" : form,
-            })
+        return render(request, "user/ParameterAccount.html", context={
+            "form" : form,
+        })
         
     def get(self, request, *args, **Kwargs):
         user = CustomUser.objects.get(pk=request.user.id)
@@ -83,3 +94,5 @@ class ParameterAccountView(View):
         return render(request, "user/ParameterAccount.html", context={
             "form" : form,
         })
+
+
