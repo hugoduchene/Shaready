@@ -12,9 +12,9 @@ from user.views import (
 urlpatterns = [
     path('myaccount/<int:id_account>', MyAccountView.as_view()),
     path('account/<int:id_account>', AccountView.as_view()),
-    path('login', auth_views.LoginView.as_view(template_name='../templates/user/connexion.html'), name="login"),
+    path('login', ConnexionView.as_view(), name="login"),
     path('logout', auth_views.LogoutView.as_view(next_page='/user/login'), name='logout'),
     path('search', SearchUserView.as_view()),
     path('notifications', NotificationsView.as_view()),
-    path('account/<int:id_account>/parameter', ParameterAccountView.as_view()),
+    path('account/parameter', ParameterAccountView.as_view()),
 ]

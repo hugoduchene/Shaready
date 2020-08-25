@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from user.models import CustomUser
 from django.contrib.auth import (authenticate, get_user_model, password_validation)
 from django.utils.translation import gettext, gettext_lazy as _
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
 
 class RegistrationForm(UserCreationForm):
     password1 = forms.CharField(
@@ -34,5 +35,12 @@ class ChangePictureForm(forms.ModelForm):
         model = CustomUser
         fields = ('image_profile',)
              
+class CustomUserForms(AuthenticationForm):
+    username = UsernameField(
+        widget=forms.TextInput(attrs={'class' : 'input_connexion', 'placeholder' : 'Pseudo'})
+    )
 
-        
+    password = forms.CharField(
+        widget = forms.PasswordInput(attrs = {'class' : 'input_connexion', 'placeholder' : 'Password'})
+    )
+    

@@ -1,19 +1,24 @@
 {% extends "../base.html" %}
 {% block content %}
 {% include 'navbar_user.html' %}
+{% load static %}
 
 <main class="content">
     <div class="container">
-
+        <link rel="stylesheet" href="{% static '/css/cropper.min.css' %}">
+        <script src="{% static '/js/cropper.min.js' %}"></script>
         <form action="" method="post" enctype="multipart/form-data" id="img_user" class="form_parameter">
             {% csrf_token %}
             <div class="container_import_pic">
-                {% load static %}
                 {% static '/assets/img/' as path_img %}
-                <img class="image_user_change_pic" src="{{path_img}}{{user.image_profile}}" alt=""><br>
+                <img class="image_user_change_pic" src="{{path_img}}{{user.image_profile}}" id="img_user_pic" alt=""><br>
                     <div class="box_button_import">
                         {{ form.image_profile }}
-                        <label for="file" class="button_import_pic">{{form.image_profile.label | safe}}</label>
+                        <label for="file" class="button_import_pic" id="button_img">
+                            {{form.image_profile.label | safe}}
+                        </label>
+
+                        <input type="hidden" name="cropped_img" id="cropped_img">
                     </div>
             </div>
             
