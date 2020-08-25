@@ -7,7 +7,7 @@ from articles.models import Article, Categories
 class FeedViews(View):
     
     def get(self, request, *args, **Kwargs):
-        all_categories = Categories.objects.all()
+        all_categories = Categories.objects.all().order_by('name_category')
 
         return render(request, "articles/feed.html", context={
             "categories" : all_categories
