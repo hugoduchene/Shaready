@@ -7,10 +7,14 @@ class Command(BaseCommand):
     """ When someone wants add a category he has to put it at the end of the list """ 
     def __init__(self):
         self.list_categories = [
-            'Politique', 
-            'Economique',
-            'Programmation',
-            'Abonnements',
+            'Political', 
+            'Economy',
+            'Computer Science',
+            'Video games',
+            'Poetry',
+            'Story time',
+            'Social Network',
+            'Shaready',
         ]
     
     def verify_is_exist(self):
