@@ -12,7 +12,10 @@ from django.core.files.base import ContentFile
 # Create your views here.
 class HomeViews(View):
     def get(self, request, *args, **kwargs):
-        return render(request, "user/home.html", context={'form' : RegistrationForm})
+        if request.user.is_authenticated:
+            return redirect('feed')
+        else:
+            return render(request, "user/home.html", context={'form' : RegistrationForm})
     
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
@@ -29,36 +32,43 @@ class HomeViews(View):
     
 class AccountView(View):
     def get(self, request, id_account, *args, **Kwargs) :
-        infos_user = CustomUser.objects.get(pk=id_account)
-        nbs_follows = infos_user.user_receiving_follow.count()
-        nbs_gold_likes = infos_user.likearticle_set.filter(reaction=1).count()
-        current_sub = Subscription.objects.filter(
-            id_giving = request.user,
-            id_receiving = id_account,
-        ).count()
-        return render(request, "user/account.html", context={
-            'infos_user' : infos_user,
-            'nbs_follow' :  nbs_follows,
-            'nbs_gold_like' : nbs_gold_likes,
-            'current_sub' : current_sub,
-        })          
-
-class MyAccountView(View):
-    def get(self, request, id_account, *args, **Kwargs):
-        if request.user.id == id_account:
-            nbs_follows = request.user.user_receiving_follow.count()
-            nbs_gold_likes = request.user.likearticle_set.filter(reaction=1).count()
+        if request.user.is_authenticated:
+            infos_user = CustomUser.objects.get(pk=id_account)
+            nbs_follows = infos_user.user_receiving_follow.count()
+            nbs_gold_likes = infos_user.likearticle_set.filter(reaction=1).count()
             current_sub = Subscription.objects.filter(
                 id_giving = request.user,
                 id_receiving = id_account,
             ).count()
-            return render(request, "user/myaccount.html", context={
+            return render(request, "user/account.html", context={
+                'infos_user' : infos_user,
                 'nbs_follow' :  nbs_follows,
                 'nbs_gold_like' : nbs_gold_likes,
                 'current_sub' : current_sub,
             })
         else:
-            return redirect('feed')
+            return redirect('home')
+
+
+class MyAccountView(View):
+    def get(self, request, id_account, *args, **Kwargs):
+        if request.user.is_authenticated:
+            if request.user.id == id_account:
+                nbs_follows = request.user.user_receiving_follow.count()
+                nbs_gold_likes = request.user.likearticle_set.filter(reaction=1).count()
+                current_sub = Subscription.objects.filter(
+                    id_giving = request.user,
+                    id_receiving = id_account,
+                ).count()
+                return render(request, "user/myaccount.html", context={
+                    'nbs_follow' :  nbs_follows,
+                    'nbs_gold_like' : nbs_gold_likes,
+                    'current_sub' : current_sub,
+                })
+            else:
+                return redirect('/user/account/'+ str(id_account))
+        else:
+            return redirect('home')
 
 class ParameterAccountView(View):
     def post(self, request, *args, **Kwargs):
@@ -79,23 +89,36 @@ class ParameterAccountView(View):
         })
         
     def get(self, request, *args, **Kwargs):
-        user = CustomUser.objects.get(pk=request.user.id)
-        form = ChangePictureForm(instance=user)
-        return render(request, "user/ParameterAccount.html", context={
-            "form" : form,
-        })
+        if request.user.is_authenticated:
+            user = CustomUser.objects.get(pk=request.user.id)
+            form = ChangePictureForm(instance=user)
+            return render(request, "user/ParameterAccount.html", context={
+                "form" : form,
+            })
+        else:
+            return redirect('home')
 
 class ConnexionView(LoginView):
     template_name = "user/login.html"
     authentication_form = CustomUserForms
 
-class SearchUserView(TemplateView):
-    template_name = "user/search_user.html"
+class SearchUserView(View):
+    
+    def get(self, request, *args, **Kwargs):
+        if request.user.is_authenticated:
+            return render(request, "user/search_user.html")
+        return redirect('home')
 
-class NotificationsView(TemplateView):
-    template_name = "user/notifications.html"
+class NotificationsView(View):
+    
+    def get(self, request, *args, **Kwargs):
+        if request.user.is_authenticated:
+            return render(request, "user/notifications.html")
+        return redirect('home')
+        
 
 class LegalNoticeView(TemplateView):
     template_name = "cgu/legalnotice.html"
+        
 
 
