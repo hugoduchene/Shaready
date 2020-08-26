@@ -26,8 +26,8 @@ class CreateSubscribe(APIView):
         subscribe_is_exist = subscribe.count()
         
         if serializer.is_valid(raise_exception=True):
-            ManageNotification().create_notification(request.user, pseudoUser, 1)
             if subscribe_is_exist == 0:
+                ManageNotification().create_notification(request.user, pseudoUser, 1)
                 serializer.save(id_giving=request.user)
             else:
                 serializer.save(id_giving=request.user)
