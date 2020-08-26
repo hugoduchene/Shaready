@@ -18,16 +18,17 @@ class TestUserViews(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         self.assertJSONEqual(
             str(response.content, encoding='utf8'),
-            [
-                {
-                    "image_profile":"user-default.png",
-                    "username":"testuser",
-                    "info_user":
-                    {
-                        "nbs_gold_likes":0,"nbs_folows":0
-                    }
-                }
-            ]
+        [
+            {
+                "image_profile": "user-default.png",
+                "username": "testuser",
+                "info_user": {
+                    "nbs_gold_likes": 0,
+                    "nbs_folows": 0
+                },
+                "id": self.id_user
+            }
+        ]
         )
         
     def test_get_research_user(self):
@@ -35,7 +36,7 @@ class TestUserViews(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         self.assertJSONEqual(
             str(response.content, encoding='utf8'),
-            [{"username":"testuser","image_profile":"user-default.png"}]
+            [{"username":"testuser","image_profile":"user-default.png", "id": self.id_user}]
         )
     
     def test_post_createsubscribe_unauthenticated(self):
@@ -56,7 +57,7 @@ class TestUserViews(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         self.assertJSONEqual(
             str(response.content, encoding='utf8'),
-            {'id_receiving': self.id_user, "nbs_follows" : 1}
+            {'id_receiving': self.id_user, 'nbs_follows': 1, 'already_follow': 1}
         )
         
 

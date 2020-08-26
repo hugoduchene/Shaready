@@ -2,13 +2,24 @@ from django.test import TestCase
 from user.models import CustomUser
 from rest_framework.test import APITestCase
 from rest_framework import status
-from articles.models import Comment , LikeComment
+from articles.models import Comment , LikeComment, Article, Categories
+from user.models import CustomUser
 from django.urls import reverse
 from rest_framework.test import APIClient
 
 class TestCommentsEndpoint(APITestCase):
     def setUp(self):
-        self.get_all_url = reverse("getAll", args=[0,1])
+        self.user = CustomUser(username="TestUser", password="secret123456")
+        self.user.save()
+        self.category = Categories(name_category="TestCategory")
+        self.category.save()
+        self.article = Article(
+            title="TestTitle", 
+            content_article="Test Content", 
+            id_category=self.category,
+            id_user=self.user,
+        ).save()
+        self.get_all_url = reverse("getAll", args=[Article.objects.all()[0].id, 1])
         self.create_like_comment_url = reverse("create_like_comment", args=[0, 'testuser'])
         self.create_comment_url = reverse("Create_comment", args=[0, 'testuser'])
         self.data_like_comment = {

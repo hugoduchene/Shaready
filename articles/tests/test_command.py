@@ -7,10 +7,14 @@ class TestCommandCreateCategories(TestCase):
     def setUp(self):
         self.command = Command()
         self.list_categories = self.list_categories = [
-            'Politique', 
-            'Economique',
-            'Programmation',
-            'Abonnements',
+            'Political', 
+            'Economy',
+            'Computer Science',
+            'Video games',
+            'Poetry',
+            'Story time',
+            'Social Network',
+            'Shaready',
         ]
 
     def test_verify_is_exist_without_objects(self):
@@ -19,12 +23,16 @@ class TestCommandCreateCategories(TestCase):
 
     def test_verify_is_exist_with_objects(self):
         list_categories_with_objects = [
-            '',
-            'Economique',
-            'Programmation',
-            'Abonnements',
+            '', 
+            'Economy',
+            'Computer Science',
+            'Video games',
+            'Poetry',
+            'Story time',
+            'Social Network',
+            'Shaready',
         ]
-        Categories(name_category='Politique').save()
+        Categories(name_category='Political').save()
         self.command.verify_is_exist()
         
         self.assertEquals(self.command.list_categories, list_categories_with_objects)

@@ -114,9 +114,9 @@ class NotificationsView(View):
     def get(self, request, *args, **Kwargs):
         if request.user.is_authenticated:
             return render(request, "user/notifications.html")
-        return redirect('home')
+        else:
+            return redirect('home')
         
-
 class LegalNoticeView(TemplateView):
     template_name = "cgu/legalnotice.html"
         
