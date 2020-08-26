@@ -154,7 +154,7 @@ img.image_user_change_pic{
 }
 
 .navbar{
-  height: 10vh;
+  height: 10%;
   background-color: #FFFFFF;
   border-bottom: 1px solid #FF3939;
   box-shadow: 2px 2px 2px #FF3939;
@@ -321,7 +321,7 @@ button.button_registrer:hover{
 }
 
 .like_user{
-  margin-top: 25px;
+  margin-top: 25px!important;
 }
 
 .form_post{
@@ -776,6 +776,7 @@ form.content_make_message{
   text-align: center;
   width: 100%;
 }
+
 @media screen and (max-width: 435px){
   img.logo_nav{
     width: 120px;
@@ -897,6 +898,15 @@ form.content_make_message{
   .nav_only_article{
     margin-top: 15px!important;
   }
+
+  .button_create_post{
+    width: 100%;
+  }
+
+  .box_make_message{
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }
 
 
@@ -952,6 +962,38 @@ form.content_make_message{
 
   .box_registrer{
     margin-top: 0px!important;
+  }
+}
+
+@media screen and (max-width: 360px){
+  .button_user{
+    padding: 5px!important;
+  }
+
+  .nbs_notif{
+    top:-20%!important;
+  }
+
+  .button_edit{
+    bottom: 13%!important;
+  }
+}
+
+@media screen and (max-width: 300px){
+  .button_user{
+    padding: 1px!important;
+  }
+
+  .nbs_notif{
+    top:-20%!important;
+  }
+
+  .button_edit{
+    bottom: 11%!important;
+  }
+
+  .btn_logout{
+    width: 50%!important;
   }
 }
 
