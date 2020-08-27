@@ -41,6 +41,6 @@ class CustomUserForms(AuthenticationForm):
     )
 
     password = forms.CharField(
-        widget = forms.PasswordInput(attrs = {'class' : 'input_connexion', 'placeholder' : 'Password'})
+        widget = forms.PasswordInput(attrs = {'class' : 'input_connexion', 'placeholder' : 'Password', 'autocomplete': 'password'})
     )
     
