@@ -15,7 +15,7 @@ The api is divided into 4 distinct parts, there are :
 </ul>
 
 <dl>
-  <dt><h3>Authentication of api's</h3></dt>
+  <dt><h3 id="auth_api">Authentication of api's</h3></dt>
   <dd>- For some endpoints, the api requires a per-session verification to interact with the shaready database.</dd>
   <dd>- For the api to accept your request, you have to take the "csrf-token" using the getCookie function, here is an example: <a href="https://docs.djangoproject.com/fr/3.1/ref/csrf/">https://docs.djangoproject.com/fr/3.1/ref/csrf/</a></dd>
   
@@ -55,7 +55,7 @@ Get : /api/articles/getarticlecategory/<idCategory>/<idPage>
 Get : /api/articles/getarticleuser/<idUser>/<idPage>
 ```
 
-  <h5><dd>To take all the items of your subscriptions, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd></h5>
+  <h5><dd>To take all the items of your subscriptions, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd></h5>
   
 ```
 Get : /api/articles/getarticlessubscribed/<int:idPage>
@@ -67,7 +67,7 @@ Get : /api/articles/getarticlessubscribed/<int:idPage>
 Get : /api/articles/gettrends/
 ```
 
-  <h5><dd>To create an article, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd><h5>
+  <h5><dd>To create an article, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd><h5>
   
 ```
 Post : /api/articles/postcreatearticle
@@ -79,7 +79,7 @@ const data = {
     }
 ```
 
-<h5><dd>To create a like on an article, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd><h5>
+<h5><dd>To create a like on an article, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd><h5>
   
 ```
 Post : /api/articles/getarticleuser/<idUser>
@@ -100,7 +100,7 @@ const data = {
 Get : /api/comments/getall/<idArticle>/<idPage>
 ```
 
-<h5><dd>To create a comment on an article, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd><h5>
+<h5><dd>To create a comment on an article, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd><h5>
   
 ```
 Post : /api/comments/createcomment/<idArticle>/<pseudoUser>
@@ -108,7 +108,7 @@ Post : /api/comments/createcomment/<idArticle>/<pseudoUser>
 const data = { "content_comment" : content_comment }
 ```
 
-<h5><dd>To create a like on a comment, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd><h5>
+<h5><dd>To create a like on a comment, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd><h5>
   
 ```
 Post : /api/comments/createlike/<idComment>/<pseudoUser>
@@ -123,19 +123,19 @@ const data = { "content_comment" : content_comment }
   <dt><h3 id="notification_api">Api notification</h3></dt>
   <dd>This part of the api manages all the interactions that the system needs to read notifications, all the endpoints available in this part of the api are below :</dd>
   
-  <h5><dd>To get the number of unread notifications, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd><h5>
+  <h5><dd>To get the number of unread notifications, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd><h5>
   
 ```
 Get : /api/notification/getnbsnotifications
 ```
 
-<h5><dd>To get all your notifications, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd><h5>
+<h5><dd>To get all your notifications, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd><h5>
   
 ```
 Get : /api/notification/getallnotification/<idPage>
 ```
 
-<h5><dd>To change the status of your notifications from unread to read, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd><h5>
+<h5><dd>To change the status of your notifications from unread to read, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd><h5>
   
 ```
 Post : /api/notification/postmanagenotification
@@ -160,13 +160,13 @@ Get : /api/user/getresearchuser/<userResearch>
 Get : /api/user/getallinfouser/<idUser>
 ```
 
-  <h5><dd>To search the list of your subscriptions, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd><h5>
+  <h5><dd>To search the list of your subscriptions, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd><h5>
   
 ```
 Get : /api/user/alreadysubscribe/<idReceiving>
 ```
 
-<h5><dd>To subscribe to a user, you must <a href="#articles_api">authenticate</a> yourself to access this endpoint.</dd><h5>
+<h5><dd>To subscribe to a user, you must <a href="#auth_api">authenticate</a> yourself to access this endpoint.</dd><h5>
   
 ```
 Post : /api/user/postsubscription/<pseudoUser>
