@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.6"
+# command to install dependencies
+before_script:
+  - pip install -r requirements.txt
+
+env: DJANGO_SETTINGS_MODULE="Shaready.settings.travis"
+
+services:
+  - postgresql
+
+script:
+  - python manage.py test
