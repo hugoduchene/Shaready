@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
 from articles.models import Categories, Article, LikeArticle, Comment, LikeComment
 from api_articles.serializers import (
     CategoriesSerializer,
@@ -21,6 +22,7 @@ from api_articles.serializers import (
 """ Manage endpoints articles user """
 
 class GetArticleUser(APIView):
+    renderer_classes = [JSONRenderer]
     
     def get(self, request, idUser, idPage):
         get_articles_user = Article.objects.filter(id_user=idUser).order_by('-date_article')
@@ -32,6 +34,7 @@ class GetArticleUser(APIView):
 class GetArticleSubscribed(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def get(self, request, idPage):
         user_subscribed = Subscription.objects.filter(id_giving=request.user)
@@ -41,6 +44,7 @@ class GetArticleSubscribed(APIView):
         return Response(serializer.data)
 
 class GetArticleTrends(APIView):
+    renderer_classes = [JSONRenderer]
     
     def get(self, request, format=None):
         trends_articles = Article.objects.order_by('likearticle').filter(date_article=date.today())[:20]
@@ -49,6 +53,7 @@ class GetArticleTrends(APIView):
         return Response(serializer.data)
 
 class GetArticleCategory(APIView):
+    renderer_classes = [JSONRenderer]
 
     def get(self, request, idCategory, idPage):
         articles = Article.objects.filter(id_category=idCategory).order_by('-date_article')[:100]
@@ -60,6 +65,7 @@ class GetArticleCategory(APIView):
 class CreateLikeArticle(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def post(self, request, idArticle, pseudoUser):
         serializer = LikeArticleSerializer(data=request.data)
@@ -100,6 +106,7 @@ class CreateLikeArticle(APIView):
 class CreateArticle(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
     
     def post(self, request, format=None):
         serializer = ArticleCreateSerailizer(data=request.data)
@@ -128,6 +135,7 @@ class CreateArticle(APIView):
 """ Manage endpoint's list's user article """
 
 class ListArticlesUser(APIView):
+    renderer_classes = [JSONRenderer]
     
     def get(self, request, idUser):
         articles_user = Article.objects.filter(id=idUser)
@@ -139,6 +147,7 @@ class ListArticlesUser(APIView):
 """ Manage endpoint's list's categories """
 
 class ListCategories(APIView):
+    renderer_classes = [JSONRenderer]
 
     def get(self, request, format= None):
         categories = Categories.objects.all()

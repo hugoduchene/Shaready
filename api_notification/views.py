@@ -5,6 +5,7 @@ from user.models import CustomUser
 from rest_framework.permissions import IsAuthenticated
 from user.models import Notification
 from django.core.paginator import Paginator
+from rest_framework.renderers import JSONRenderer
 from api_notification.serializer import (
     NbsNotificationSerializer,
     AllDataNotificationSerializer,
@@ -15,6 +16,7 @@ from api_notification.serializer import (
 class NbsNotification(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def get(self, request, format=None):
         all_notif = {
@@ -29,6 +31,7 @@ class NbsNotification(APIView):
 class ManageNotification(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def post(self, request, format=None):
         test = Notification.objects.filter(
@@ -41,6 +44,7 @@ class ManageNotification(APIView):
 class GetAllNotification(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def get(self, request, idPage):
         all_notifications = Notification.objects.filter(id_receiving=request.user).order_by('-date_notification')

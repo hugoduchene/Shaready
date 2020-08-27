@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from utils.notification import ManageNotification
 from articles.models import Article, Comment, LikeComment
 from user.models import CustomUser
+from rest_framework.renderers import JSONRenderer
 from api_comments.serializer import (
     CommentArticleSerializer,
     LikeCommentSerializer,
@@ -18,6 +19,7 @@ from api_comments.serializer import (
 """ Manage endpoint's comment """
 
 class GetAllCommentArticle(APIView):
+    renderer_classes = [JSONRenderer]
 
     def get(self, request, idArticle, idPage):
         all_comments = Comment.objects.filter(id_article=idArticle).order_by('-date_comment', 'likecomment')
@@ -31,6 +33,7 @@ class GetAllCommentArticle(APIView):
 class CreateLikeCommentArticle(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def post(self, request, idComment, pseudoUser):
         comment = Comment.objects.filter(pk=idComment)
@@ -72,6 +75,7 @@ class CreateLikeCommentArticle(APIView):
 class CreateCommentArticle(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def post(self, request, idArticle, pseudoUser):
         article = Article.objects.filter(id=idArticle)

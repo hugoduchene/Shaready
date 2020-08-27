@@ -9,12 +9,14 @@ from api_user.serializer import (
 )
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.renderers import JSONRenderer
 
 # Create your views here.
 
 class CreateSubscribe(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
 
     def post(self, request, pseudoUser):
         serializer = SubscriptionSerializer(data=request.data)
@@ -39,6 +41,7 @@ class CreateSubscribe(APIView):
             return Response(serializer.data)
 
 class GetAllInfoUser(APIView):
+    renderer_classes = [JSONRenderer]
 
     def get(self, request, idUser):
         user = CustomUser.objects.filter(id=idUser)
@@ -57,6 +60,7 @@ class GetAllInfoUser(APIView):
         
 
 class ResearchUser(APIView):
+    renderer_classes = [JSONRenderer]
 
     def get(self, request, userSearch):
         user = CustomUser.objects.filter(username__icontains=userSearch)
@@ -66,6 +70,7 @@ class ResearchUser(APIView):
 class AlreadySubscribed(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+    renderer_classes = [JSONRenderer]
     
     def get(self, request, idReceiving):
         already_sub = {
