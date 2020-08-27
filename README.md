@@ -3,6 +3,14 @@
 
 Shaready is a social information network aiming to conquer the magnificent market of communication and knowledge.
 
+<h1 id="future"> The future of Shaready</h1>
+
+<ul>
+  <li><a href="https://github.com/hugoduchene/Shaready/projects/2">V1 Shaready</a></li>
+  <li><a href="https://github.com/hugoduchene/Shaready/projects/3">V2 Shaready</a></li>
+  <li><a href="https://github.com/hugoduchene/Shaready/projects/4">V3 Shaready</a></li>
+</ul>
+
 # API docs
 
 The api is divided into 4 distinct parts, there are :
