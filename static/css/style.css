@@ -1061,3 +1061,44 @@ span.row{
 .fa-heart, .fa-thumbs-up, .fa-thumbs-down, .fa-comment{
   margin-right: 3px;
 }
+
+/* banner_cookies */
+
+.container_banner_cookie{
+  color: white;
+  width: 100%;
+  background-color:rgb(222, 46, 46);
+  position: absolute;
+  bottom: 0%;
+  padding: 2%;
+  z-index: 100;
+}
+
+.button_accept_cookies{
+  justify-content: center;
+  display: flex;
+  color: rgb(255, 57, 57);
+  align-items: center;
+  text-align: center;
+}
+
+.btn_cookie{
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: white;
+  color: rgb(255, 57, 57);
+  border: 2px solid white;
+  margin: 0 auto;
+  width: 50%;
+  transition: 0.2s;
+}
+
+.btn_cookie:hover{
+  cursor: pointer;
+  background-color:rgb(255, 57, 57);
+  color: white;
+}
+
+.fixed_banner{
+  position: fixed;
+}
