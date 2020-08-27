@@ -1,4 +1,4 @@
-# Shaready
+# Shaready <img src="https://travis-ci.com/hugoduchene/Shaready.svg?branch=master">
 <img align="center" src="https://github.com/hugoduchene/Shaready/blob/dev/static/assets/img/logo_nav.svg"/>
 
 Shaready is a social information network aiming to conquer the magnificent market of communication and knowledge.
