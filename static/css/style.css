@@ -966,6 +966,10 @@ form.content_make_message{
 }
 
 @media screen and (max-width: 360px){
+  a.button_nav{
+    padding-right: 10px!important;
+    padding-left: 10px!important;
+  }
   .button_user{
     padding: 5px!important;
   }
