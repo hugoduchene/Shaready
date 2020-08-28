@@ -13,6 +13,14 @@ from rest_framework.renderers import JSONRenderer
 
 # Create your views here.
 
+class NbsUser(APIView):
+    renderer_classes = [JSONRenderer]
+
+    def get(self, request, format=None):
+        nbs_user = { "nbs_user" : CustomUser.objects.all().count()}
+        return Response(nbs_user)
+
+
 class CreateSubscribe(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
