@@ -153,7 +153,7 @@ LOGIN_REDIRECT_URL = 'feed'
 
 #Direction of my image
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/assets/img')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../static/assets/img')
 
 #settings model articles
 
