@@ -8,13 +8,10 @@ function create_loader(){
   return container_loader
 }
 
-function hidden_loader(){
-  const loader = document.querySelectorAll("#loader")
-  for (let i = 0; i < loader.length; i++) {
-    loader[i].classList.add('hidden')
-  }
-  
-  return loader
+function hidden_loader() {
+  return Array.from(document.querySelectorAll("#loader"))?.forEach(loader =>
+    loader.classList.add("hidden")
+  );
 }
 
 const insertPost = async function(data, url_request) {
