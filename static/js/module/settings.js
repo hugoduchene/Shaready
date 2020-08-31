@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:8000/"
+const url = "/"
 
 function create_loader(){
   const container_loader = document.createElement('div')
@@ -23,6 +23,7 @@ const insertPost = async function(data, url_request) {
     headers : {
       'Content-Type': 'application/json',
       'X-CSRFToken' : getCookie('csrftoken'),
+      'credentials' : 'same-origin',
     },
     body: JSON.stringify(data)
   })
@@ -34,9 +35,17 @@ const insertPost = async function(data, url_request) {
   }
 }
 
+
 const request = async function (url_request) {
+  const headers = { 
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'credentials' : 'same-origin',
+    },
+  }
   try {
-      let response = await fetch(url_request)
+      let response = await fetch(url_request, headers)
       if (response.ok) {
         let data = await response.json()
 

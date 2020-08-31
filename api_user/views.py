@@ -71,7 +71,7 @@ class ResearchUser(APIView):
     renderer_classes = [JSONRenderer]
 
     def get(self, request, userSearch):
-        user = CustomUser.objects.filter(username__icontains=userSearch)
+        user = CustomUser.objects.filter(username__icontains=userSearch)[:16]
         serializer = ResearchUserSerializer(user, many=True)
         return Response(serializer.data)
         

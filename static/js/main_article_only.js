@@ -30,6 +30,7 @@ function infinite_comments(i) {
     request_comment.then(data => {
         for (let x = 0; x < data.length; x++) {
             place_comment.append(create_comment(
+                data[x].info_user.id_user_comment,
                 data[x].info_user.photo, 
                 data[x].info_user.pseudo, 
                 data[x].date_comment, 
@@ -63,6 +64,7 @@ document.getElementById('button_comments').addEventListener('click', (e) => {
         document.querySelector('.input_comment').value = ""
         request_create_comment.then(data => {
             const new_comment = create_comment(
+                data.info_user.id_user_comment,
                 data.info_user.image_profile,
                 data.info_user.pseudo,
                 data.info_user.date.split('T')[0],

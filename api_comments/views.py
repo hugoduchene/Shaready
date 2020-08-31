@@ -87,7 +87,8 @@ class CreateCommentArticle(APIView):
             
             if serializer.is_valid(raise_exception=True):
                 Comment.info_user = {
-                    "image_profile" : str(CustomUser.objects.get(pk=1).image_profile),
+                    "id_user_comment" : request.user.id,
+                    "image_profile" : str(CustomUser.objects.get(pk=request.user.id).image_profile),
                     "pseudo" : request.user.username,
                     "date" : timezone.now()
                 }

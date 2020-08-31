@@ -3,6 +3,7 @@ import { infinite, url, request, create_loader, hidden_loader, insertPost, Manag
 import { infinite_scroll_article_categories } from './module/FeedSettings.js'
 
 /* create trends articles */
+
 if (document.querySelector("#see_categories").value == "trends") {
   place_article.append(create_loader())
   const request_trends = request(url + "api/articles/gettrends/")
@@ -32,7 +33,7 @@ get_modal_class().onclick = function(e) {
 
 /* display of the articles according to their category */
 
-document.querySelector("#see_categories").addEventListener("click", function(e){
+document.querySelector("#see_categories").addEventListener("change", function(e){
   const place_article = document.getElementById('place_article')
   place_article.innerHTML = ""
   place_article.append(create_loader())

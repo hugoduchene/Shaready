@@ -190,24 +190,49 @@ PWA_APP_SCOPE = '/'
 PWA_APP_ORIENTATION = 'any'
 PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = 'default'
-PWA_APP_ICONS = [
+PWA_APP_ICONS =[
+   {
+      "src": "/static/assets/img/logo_sr_96px.png",
+      "sizes": "96x96",
+    },
     {
-        'src': '/static/assets/img/logo.svg',
-        'sizes': '160x160'
+      "src": "/static/assets/img/logo_sr_144px.png",
+      "sizes": "144x144",
+    },
+    {
+      "src": "/static/assets/img/logo_sr_192px.png",
+      "sizes": "192x192",
+    },
+    {
+      "src": "/static/assets/img/logo_sr_512px.png",
+      "sizes": "512x512",
     }
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        'src': '/static/assets/img/logo.svg',
-        'sizes': '160x160'
+      "src": "/static/assets/img/logo_sr_96px.png",
+      "sizes": "96x96",
+    },
+    {
+      "src": "/static/assets/img/logo_sr_144px.png",
+      "sizes": "144x144",
+    },
+    {
+      "src": "/static/assets/img/logo_sr_192px.png",
+      "sizes": "192x192",
+    },
+    {
+      "src": "/static/assets/img/logo_sr_512px.png",
+      "sizes": "512x512",
     }
 ]
 PWA_APP_SPLASH_SCREEN = [
     {
-        'src': '/static/assets/img/logo_nav.svg',
-        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+        'src': '/static/assets/img/logo.svg',
+        'media': 'screen and (max-device-width: 500px) and (-webkit-device-pixel-ratio: 2)'
     }
 ]
+
 PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
 
@@ -219,5 +244,10 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    ]
-}
+    ],
+
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework.authentication.BasicAuthentication',
+            'rest_framework.authentication.SessionAuthentication',
+        )
+

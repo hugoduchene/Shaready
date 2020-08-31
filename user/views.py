@@ -8,6 +8,7 @@ from user.models import CustomUser, Subscription
 from user.forms import ChangePictureForm, CustomUserForms
 from django.contrib.auth.views import LoginView
 from django.core.files.base import ContentFile
+from articles.models import Article, LikeArticle
 
 # Create your views here.
 class HomeViews(View):
@@ -55,7 +56,8 @@ class MyAccountView(View):
         if request.user.is_authenticated:
             if request.user.id == id_account:
                 nbs_follows = request.user.user_receiving_follow.count()
-                nbs_gold_likes = request.user.likearticle_set.filter(reaction=1).count()
+                article_user = Article.objects.filter(id_user=request.user)
+                nbs_gold_likes = LikeArticle.objects.filter(id_article__in=article_user, reaction=1).count()
                 current_sub = Subscription.objects.filter(
                     id_giving = request.user,
                     id_receiving = id_account,

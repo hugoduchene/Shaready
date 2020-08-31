@@ -27,7 +27,7 @@ function event_like_comment(obj, id_comments, pseudoUser, reaction) {
 }
 
 
-function create_comment(src_img, pseudo, date, content_comment, nbs_like, nbs_dislike, id_comment) {
+function create_comment(id_user_comment, src_img, pseudo, date, content_comment, nbs_like, nbs_dislike, id_comment) {
     const container_comments = document.createElement('section')
     container_comments.classList.add('box_comments')
     container_comments.id = id_comment
@@ -44,11 +44,15 @@ function create_comment(src_img, pseudo, date, content_comment, nbs_like, nbs_di
     container_img.classList.add('col-2', 'container_image_comments')
     container_row.append(container_img)
 
+    const container_link_img = document.createElement('a')
+    container_link_img.href = "/user/account/" + id_user_comment
+    container_img.append(container_link_img)
+
     const img_user = document.createElement('img')
     img_user.src = '/static/assets/img/' + src_img
     img_user.classList.add('image_comments')
     img_user.alt = "Image User"
-    container_img.append(img_user)
+    container_link_img.append(img_user)
 
     const container_info_user = document.createElement('div')
     container_info_user.classList.add('col-10')

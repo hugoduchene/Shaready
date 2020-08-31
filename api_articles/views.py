@@ -47,7 +47,9 @@ class GetArticleTrends(APIView):
     renderer_classes = [JSONRenderer]
     
     def get(self, request, format=None):
-        trends_articles = Article.objects.order_by('likearticle').filter(date_article=date.today())[:20]
+        trends_articles = Article.objects.filter(date_article=date.today()).annotate(
+            count = Count('likearticle')
+        ).order_by('-count')[:20]
         
         serializer = AllDataArticle().get_all_infos(trends_articles)
         return Response(serializer.data)
