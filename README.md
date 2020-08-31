@@ -25,8 +25,8 @@ The api is divided into 4 distinct parts, there are :
 <dl>
   <dt><h3 id="auth_api">Authentication of api's</h3></dt>
   <dd>- For some endpoints, the api requires a per-session verification to interact with the shaready database.</dd>
-  <dd>- For the api to accept your request, you have to take the "csrf-token" using the getCookie function, here is an example: <a href="https://docs.djangoproject.com/fr/3.1/ref/csrf/">https://docs.djangoproject.com/fr/3.1/ref/csrf/</a></dd>
-  
+  <dd>- For the api to accept your post request, you have to take the "csrf-token" using the getCookie function, here is an example: <a href="https://docs.djangoproject.com/fr/3.1/ref/csrf/">https://docs.djangoproject.com/fr/3.1/ref/csrf/</a></dd>
+
   ```js
   const insertPost = async function(data, url_request) {
   let response = await fetch(url_request, {
@@ -34,8 +34,20 @@ The api is divided into 4 distinct parts, there are :
     headers : {
       'Content-Type': 'application/json',
       'X-CSRFToken' : getCookie('csrftoken'),
+      'credentials' : 'same-origin',
     },
     body: JSON.stringify(data)
+  })
+  ```
+  <dd>To request the endpoints that have permissions you must add in the header of your requests the cookies with "credentials".</dd>
+  
+  ```js
+  fetch('https://example.com:1234/users', {
+  credentials: 'include'
+  })
+
+  fetch('/users', {
+  credentials: 'same-origin'
   })
   ```
   
