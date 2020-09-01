@@ -1,4 +1,4 @@
-from django.urls import  path
+from django.urls import path
 from api_notification.views import (
     NbsNotification,
     ManageNotification,

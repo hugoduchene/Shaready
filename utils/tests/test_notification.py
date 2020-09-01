@@ -2,8 +2,11 @@ from utils.notification import ManageNotification
 from user.models import CustomUser, Notification
 from django.test import TestCase
 
+""" unit test on notification """
+
+
 class TestManageNotification(TestCase):
-    
+
     def setUp(self):
         self.user = CustomUser(username="testuser", password="secret123456")
         self.user.save()

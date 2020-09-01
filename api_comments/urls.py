@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from api_comments.views import (
     GetAllCommentArticle,
     CreateLikeCommentArticle,

@@ -1,8 +1,7 @@
-from django.urls import  path
+from django.urls import path
 from api_user.views import (
     CreateSubscribe,
     GetAllInfoUser,
-    ResearchUser,
     ResearchUser,
     AlreadySubscribed,
     NbsUser,

@@ -1,10 +1,13 @@
 from user.models import Notification, CustomUser
 
-class  ManageNotification():
+""" Manages the creation of notifications """
+
+
+class ManageNotification():
 
     def create_notification(self, user_giving, pseudoUser, type):
-        create_notification = Notification(
-            id_giving=user_giving, 
+        Notification(
+            id_giving=user_giving,
             id_receiving=CustomUser.objects.get(username=pseudoUser),
-            type_notification= type
+            type_notification=type
         ).save()

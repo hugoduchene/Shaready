@@ -1,9 +1,9 @@
-from django.urls import  path
+from django.urls import path
 from django.contrib.auth import views as auth_views
 from user.views import (
-    MyAccountView, 
-    ConnexionView, 
-    SearchUserView, 
+    MyAccountView,
+    ConnexionView,
+    SearchUserView,
     NotificationsView,
     ParameterAccountView,
     AccountView,

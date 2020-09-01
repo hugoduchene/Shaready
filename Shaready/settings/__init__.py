@@ -145,17 +145,17 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 INTERNAL_IPS = ['127.0.0.1']
 
-#Direction of user's Models
+# Direction of user's Models
 
 AUTHENTICATION_BACKENDS = ( 'django.contrib.auth.backends.ModelBackend', )
 AUTH_USER_MODEL = 'user.CustomUser'
 LOGIN_REDIRECT_URL = 'feed'
 
-#Direction of my image
+# Direction of my image
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '../static/assets/img')
 
-#settings model articles
+# Settings model articles
 
 LikeChoicesArticles = [
     ('1', 'gold_like'),
@@ -175,11 +175,11 @@ ChoicesNotification = [
     ('4', 'comment'),
 ]
 
-#settings cors 
+# Settings cors
 
-CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL = True
 
-#settings PWA
+# Settings PWA
 
 PWA_APP_NAME = 'Shaready'
 PWA_APP_DESCRIPTION = "Shaready is a social information network."
@@ -190,8 +190,8 @@ PWA_APP_SCOPE = '/'
 PWA_APP_ORIENTATION = 'any'
 PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = 'default'
-PWA_APP_ICONS =[
-   {
+PWA_APP_ICONS = [
+    {
       "src": "/static/assets/img/logo_sr_96px.png",
       "sizes": "96x96",
     },
@@ -236,7 +236,7 @@ PWA_APP_SPLASH_SCREEN = [
 PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
 
-#settings drf
+# Settings drf
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
