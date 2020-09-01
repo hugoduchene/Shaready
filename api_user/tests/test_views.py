@@ -49,7 +49,7 @@ class TestUserViews(APITestCase):
         )
         self.assertEquals(response.status_code, status.HTTP_403_FORBIDDEN)
 
-    def test_post_createsubscribe_aunthenticated(self):
+    def test_post_createsubscribe_authenticated(self):
         self.client.force_login(CustomUser.objects.get_or_create(username='testuser1')[0])
         response = self.client.post(
             self.create_subscribed_url,

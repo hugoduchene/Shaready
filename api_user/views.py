@@ -49,7 +49,7 @@ class CreateSubscribe(APIView):
                 subscribe.delete()
             Subscription.already_follow = subscribe.count()
             Subscription.nbs_follows = Subscription.objects.filter(
-                id_receivin=request.data.get("id_receiving", "")
+                id_receiving=request.data.get("id_receiving", "")
             ).count()
             return Response(serializer.data)
 
