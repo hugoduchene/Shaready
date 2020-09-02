@@ -21,4 +21,3 @@ class Notification(models.Model):
     type_notification = models.CharField(null=False, max_length=155, choices=ChoicesNotification)
     read = models.BooleanField(default=False)
     date_notification = models.DateTimeField(default=timezone.now)
-

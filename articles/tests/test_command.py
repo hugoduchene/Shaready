@@ -46,4 +46,3 @@ class TestCommandCreateCategories(TestCase):
         length_table = Categories.objects.all().count()
 
         self.assertEquals(length_table, len(self.command.list_categories))
-

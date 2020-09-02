@@ -16,12 +16,12 @@ class TestFeedEndpoint(APITestCase):
         self.article_user_url = reverse("article_user", args=[1, 1])
 
     def test_get_article_sub_unautenticated(self):
-        response= self.client.get(self.article_subscribed_url)
+        response = self.client.get(self.article_subscribed_url)
         self.assertEquals(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_get_article_sub_authenticated(self):
         self.client.force_login(CustomUser.objects.get_or_create(username='testuser')[0])
-        response= self.client.get(self.article_subscribed_url)
+        response = self.client.get(self.article_subscribed_url)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
 
     def test_get_article_user(self):

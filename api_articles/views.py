@@ -173,4 +173,3 @@ class ListCategories(APIView):
         serializer = CategoriesSerializer(categories, many=True)
 
         return Response(serializer.data)
-

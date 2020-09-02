@@ -64,4 +64,3 @@ class TestModel(TestCase):
 
     def test_LikeComment(self):
         self.assertEquals(self.likeComment.id_user, self.user)
-

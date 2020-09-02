@@ -147,7 +147,7 @@ INTERNAL_IPS = ['127.0.0.1']
 
 # Direction of user's Models
 
-AUTHENTICATION_BACKENDS = ( 'django.contrib.auth.backends.ModelBackend', )
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
 AUTH_USER_MODEL = 'user.CustomUser'
 LOGIN_REDIRECT_URL = 'feed'
 
@@ -251,4 +251,3 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     )
 }
-
